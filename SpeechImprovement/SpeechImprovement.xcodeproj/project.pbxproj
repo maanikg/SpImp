@@ -8,12 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		4838DCE92A0318F70045380C /* SpeechImprovementApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838DCE82A0318F70045380C /* SpeechImprovementApp.swift */; };
-		4838DCEB2A0318F70045380C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838DCEA2A0318F70045380C /* ContentView.swift */; };
 		4838DCED2A0318FA0045380C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4838DCEC2A0318FA0045380C /* Assets.xcassets */; };
-		4838DCF02A0318FA0045380C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4838DCEF2A0318FA0045380C /* Preview Assets.xcassets */; };
 		4838DCFA2A0318FA0045380C /* SpeechImprovementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838DCF92A0318FA0045380C /* SpeechImprovementTests.swift */; };
 		4838DD042A0318FA0045380C /* SpeechImprovementUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838DD032A0318FA0045380C /* SpeechImprovementUITests.swift */; };
 		4838DD062A0318FA0045380C /* SpeechImprovementUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838DD052A0318FA0045380C /* SpeechImprovementUITestsLaunchTests.swift */; };
+		4838DD4B2A0327BB0045380C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838DD4A2A0327BB0045380C /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,14 +35,13 @@
 /* Begin PBXFileReference section */
 		4838DCE52A0318F70045380C /* SpeechImprovement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeechImprovement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4838DCE82A0318F70045380C /* SpeechImprovementApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechImprovementApp.swift; sourceTree = "<group>"; };
-		4838DCEA2A0318F70045380C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4838DCEC2A0318FA0045380C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4838DCEF2A0318FA0045380C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4838DCF52A0318FA0045380C /* SpeechImprovementTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeechImprovementTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4838DCF92A0318FA0045380C /* SpeechImprovementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechImprovementTests.swift; sourceTree = "<group>"; };
 		4838DCFF2A0318FA0045380C /* SpeechImprovementUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeechImprovementUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4838DD032A0318FA0045380C /* SpeechImprovementUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechImprovementUITests.swift; sourceTree = "<group>"; };
 		4838DD052A0318FA0045380C /* SpeechImprovementUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechImprovementUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4838DD4A2A0327BB0045380C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,20 +92,11 @@
 		4838DCE72A0318F70045380C /* SpeechImprovement */ = {
 			isa = PBXGroup;
 			children = (
+				4838DD4A2A0327BB0045380C /* ContentView.swift */,
 				4838DCE82A0318F70045380C /* SpeechImprovementApp.swift */,
-				4838DCEA2A0318F70045380C /* ContentView.swift */,
 				4838DCEC2A0318FA0045380C /* Assets.xcassets */,
-				4838DCEE2A0318FA0045380C /* Preview Content */,
 			);
 			path = SpeechImprovement;
-			sourceTree = "<group>";
-		};
-		4838DCEE2A0318FA0045380C /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				4838DCEF2A0318FA0045380C /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		4838DCF82A0318FA0045380C /* SpeechImprovementTests */ = {
@@ -231,7 +220,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4838DCF02A0318FA0045380C /* Preview Assets.xcassets in Resources */,
 				4838DCED2A0318FA0045380C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,8 +245,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4838DCEB2A0318F70045380C /* ContentView.swift in Sources */,
 				4838DCE92A0318F70045380C /* SpeechImprovementApp.swift in Sources */,
+				4838DD4B2A0327BB0045380C /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
