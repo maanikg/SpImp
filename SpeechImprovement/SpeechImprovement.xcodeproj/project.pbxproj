@@ -13,6 +13,7 @@
 		4838DD042A0318FA0045380C /* SpeechImprovementUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838DD032A0318FA0045380C /* SpeechImprovementUITests.swift */; };
 		4838DD062A0318FA0045380C /* SpeechImprovementUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838DD052A0318FA0045380C /* SpeechImprovementUITestsLaunchTests.swift */; };
 		4838DD4B2A0327BB0045380C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838DD4A2A0327BB0045380C /* ContentView.swift */; };
+		48F833902A034D3800307186 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F8338F2A034D3700307186 /* CircleImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		4838DD032A0318FA0045380C /* SpeechImprovementUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechImprovementUITests.swift; sourceTree = "<group>"; };
 		4838DD052A0318FA0045380C /* SpeechImprovementUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechImprovementUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4838DD4A2A0327BB0045380C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		48F8338F2A034D3700307186 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,9 +94,10 @@
 		4838DCE72A0318F70045380C /* SpeechImprovement */ = {
 			isa = PBXGroup;
 			children = (
-				4838DD4A2A0327BB0045380C /* ContentView.swift */,
 				4838DCE82A0318F70045380C /* SpeechImprovementApp.swift */,
+				4838DD4A2A0327BB0045380C /* ContentView.swift */,
 				4838DCEC2A0318FA0045380C /* Assets.xcassets */,
+				48F8338F2A034D3700307186 /* CircleImage.swift */,
 			);
 			path = SpeechImprovement;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4838DCE92A0318F70045380C /* SpeechImprovementApp.swift in Sources */,
+				48F833902A034D3800307186 /* CircleImage.swift in Sources */,
 				4838DD4B2A0327BB0045380C /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

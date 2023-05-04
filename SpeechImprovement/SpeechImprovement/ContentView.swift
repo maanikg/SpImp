@@ -10,10 +10,26 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!!")
+            CircleImage()
+//            Image(systemName: "swift")
+//                .imageScale(.large)
+//                .foregroundColor(Color.orange)
+            VStack(alignment:.leading){
+                Text("Our First App!")
+                    .font(.title)
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color.indigo)
+                Divider()
+                HStack {
+                    Text("Created on May 3, 2023")
+                        .font(.headline)
+                    Spacer()
+                    Text("Maanik, Tyler")
+                        .font(.subheadline)
+                        .foregroundColor(Color.green)
+                    
+                }
+            }
         }
         .padding()
     }
