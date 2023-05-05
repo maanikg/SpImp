@@ -7,31 +7,59 @@
 
 import SwiftUI
 
+
+//@State private var username: String = ""
+let backgroundColor = LinearGradient(colors: [Color.white, Color.blue], startPoint: .top, endPoint: .bottom)
 struct ContentView: View {
+    @State private var signIn = false
+    @State private var register = false
     var body: some View {
-        VStack {
-            CircleImage()
-//            Image(systemName: "swift")
-//                .imageScale(.large)
-//                .foregroundColor(Color.orange)
-            VStack(alignment:.leading){
-                Text("Our First App!")
-                    .font(.title)
-                    .fontWeight(.semibold)
-                    .foregroundColor(Color.indigo)
-                Divider()
-                HStack {
-                    Text("Created on May 3, 2023")
-                        .font(.headline)
+        ZStack{
+//            TextField ("Name",
+//                        text: .constant (""),
+//                        prompt: Text ("Please enter your name here"))
+//            SecureField("Password", text:.constant(""))
+            VStack {
+                CircleImage()
+                VStack(alignment:.center){
+//                    Text("Our First App!")
+                    Text("Speech Improvement")
+                        .font(.title)
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color.black)
+//                        .underline()
+                    Divider()
+                        .background(Color.black)
+                    HStack {
+                    Button(action: {
+                        signIn=true
+                    }){
+                        Label("Sign In!", systemImage: "lock.open")
+                            .foregroundColor(Color.black)
+                            .bold()
+                    }
+                    .tint(Color.black)
                     Spacer()
-                    Text("Maanik, Tyler")
-                        .font(.subheadline)
-                        .foregroundColor(Color.green)
-                    
+                        Button(action: {
+                            register=true
+                        }){
+                            Label("Register!", systemImage: "folder.badge.plus")
+                                .foregroundColor(Color.black)
+                                .bold()
+                                
+                        }
+                        .tint(Color.black)
+                    }.buttonStyle(.bordered)
                 }
             }
+            .padding()
         }
         .padding()
+//        .ignoresSafeArea()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+//        .background(Color.blue.gradient)
+        .background(backgroundColor)
+        
     }
 }
 
