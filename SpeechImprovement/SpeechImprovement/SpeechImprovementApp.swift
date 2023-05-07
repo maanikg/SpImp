@@ -11,7 +11,7 @@ import SwiftUI
 struct SpeechImprovementApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeScreen()
         }
     }
 }
