@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4809E1DF2A0831CB003F954C /* RecordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4809E1DE2A0831CB003F954C /* RecordScreen.swift */; };
+		4809E1E12A0831ED003F954C /* Archives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4809E1E02A0831ED003F954C /* Archives.swift */; };
 		4838DCE92A0318F70045380C /* SpeechImprovementApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838DCE82A0318F70045380C /* SpeechImprovementApp.swift */; };
 		4838DCED2A0318FA0045380C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4838DCEC2A0318FA0045380C /* Assets.xcassets */; };
 		4838DCFA2A0318FA0045380C /* SpeechImprovementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838DCF92A0318FA0045380C /* SpeechImprovementTests.swift */; };
 		4838DD042A0318FA0045380C /* SpeechImprovementUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838DD032A0318FA0045380C /* SpeechImprovementUITests.swift */; };
 		4838DD062A0318FA0045380C /* SpeechImprovementUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838DD052A0318FA0045380C /* SpeechImprovementUITestsLaunchTests.swift */; };
-		4838DD4B2A0327BB0045380C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838DD4A2A0327BB0045380C /* ContentView.swift */; };
+		4838DD4B2A0327BB0045380C /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838DD4A2A0327BB0045380C /* HomeScreen.swift */; };
 		48F833902A034D3800307186 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F8338F2A034D3700307186 /* CircleImage.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4809E1DE2A0831CB003F954C /* RecordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordScreen.swift; sourceTree = "<group>"; };
+		4809E1E02A0831ED003F954C /* Archives.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archives.swift; sourceTree = "<group>"; };
 		4838DCE52A0318F70045380C /* SpeechImprovement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeechImprovement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4838DCE82A0318F70045380C /* SpeechImprovementApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechImprovementApp.swift; sourceTree = "<group>"; };
 		4838DCEC2A0318FA0045380C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -42,7 +46,7 @@
 		4838DCFF2A0318FA0045380C /* SpeechImprovementUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeechImprovementUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4838DD032A0318FA0045380C /* SpeechImprovementUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechImprovementUITests.swift; sourceTree = "<group>"; };
 		4838DD052A0318FA0045380C /* SpeechImprovementUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechImprovementUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		4838DD4A2A0327BB0045380C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4838DD4A2A0327BB0045380C /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		48F8338F2A034D3700307186 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,7 +99,9 @@
 			isa = PBXGroup;
 			children = (
 				4838DCE82A0318F70045380C /* SpeechImprovementApp.swift */,
-				4838DD4A2A0327BB0045380C /* ContentView.swift */,
+				4838DD4A2A0327BB0045380C /* HomeScreen.swift */,
+				4809E1DE2A0831CB003F954C /* RecordScreen.swift */,
+				4809E1E02A0831ED003F954C /* Archives.swift */,
 				4838DCEC2A0318FA0045380C /* Assets.xcassets */,
 				48F8338F2A034D3700307186 /* CircleImage.swift */,
 			);
@@ -248,9 +254,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4809E1E12A0831ED003F954C /* Archives.swift in Sources */,
+				4809E1DF2A0831CB003F954C /* RecordScreen.swift in Sources */,
 				4838DCE92A0318F70045380C /* SpeechImprovementApp.swift in Sources */,
 				48F833902A034D3800307186 /* CircleImage.swift in Sources */,
-				4838DD4B2A0327BB0045380C /* ContentView.swift in Sources */,
+				4838DD4B2A0327BB0045380C /* HomeScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
