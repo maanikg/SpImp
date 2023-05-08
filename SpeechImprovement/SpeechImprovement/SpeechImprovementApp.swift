@@ -11,7 +11,8 @@ import SwiftUI
 struct SpeechImprovementApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeScreen()
+//            HomeScreen()
+            RecordScreen()
         }
     }
 }
