@@ -67,13 +67,26 @@ struct FinalScore: View {
                 NavigationLink(destination: HomeScreen()) {
                     Text("Home Page")
                 }
+                .frame(maxWidth: .infinity, alignment: .center)
                 .padding()
+                .background(Color.white.opacity(0.25))
+                .cornerRadius(8)
+                .foregroundColor(Color.black)
+                .bold()
                 
                 NavigationLink(destination: PastScore()) {
                     Text("Past Scores")
                 }
+                .frame(maxWidth: .infinity, alignment:.center)
                 .padding()
+                .background(Color.white.opacity(0.25))
+                .cornerRadius(8)
+                .foregroundColor(Color.black)
+                .bold()
+                
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
