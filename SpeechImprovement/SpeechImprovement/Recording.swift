@@ -6,6 +6,7 @@
 //
 import SwiftUI
 import Foundation
+import AppKit
 
 class StopWatch {
     var startTime: Date?
@@ -54,6 +55,30 @@ struct Record: View {
                     else {
                         stopwatch.stop()
                         // Create pop up window to go to score or to keep recording
+                        let alert = NSAlert()
+                            //alert.messageText = "Variable is false"
+                            alert.informativeText = "Are you done with your recording?"
+                            alert.alertStyle = .warning
+                            alert.addButton(withTitle: "Continue Recording")
+                            alert.addButton(withTitle: "Done")
+                            
+                            // Show the alert as a modal dialog
+                            let response = alert.runModal()
+                            
+                            // Check which button was clicked
+                            if response == NSApplication.ModalResponse.alertFirstButtonReturn {
+                                // Dismiss button clicked
+                                //print("Dismiss button clicked")
+                                stopwatch.start()
+                            } else if response == NSApplication.ModalResponse.alertSecondButtonReturn {
+                                // Go to new page button clicked
+                                //print("Go to new page button clicked")
+                                // TODO: Navigate to new page here
+                                let fileURL = URL(fileURLWithPath: "Score.swift")
+                                        
+                                        // Open the file with the default application
+                                NSWorkspace.shared.open(fileURL)
+                            }
                     }
                         
                 }

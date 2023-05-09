@@ -10,8 +10,8 @@ import SwiftUI
 
 struct PastScore: View {
     var body: some View {
-        Text("In construction")
-            .foregroundColor(.black)
+        Text("Honestly, exact same code as Score screen")
+            .foregroundColor(.white)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
