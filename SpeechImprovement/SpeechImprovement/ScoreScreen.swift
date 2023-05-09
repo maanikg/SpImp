@@ -69,7 +69,7 @@ struct FinalScore: View {
                 }
                 .padding()
                 
-                NavigationLink(destination: PastScore()) {
+                NavigationLink(destination: PastScoreScreen()) {
                     Image(systemName: "list.bullet")
                     Text("Past Scores")
                 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ArchivesView: View {
+struct ArchivesScreen: View {
     var body: some View {
         ScrollView {
             
@@ -18,6 +18,6 @@ struct ArchivesView: View {
 
 struct Archives_Previews: PreviewProvider {
     static var previews: some View {
-        ArchivesView()
+        ArchivesScreen()
     }
 }

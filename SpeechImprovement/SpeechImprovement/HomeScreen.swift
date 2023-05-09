@@ -34,7 +34,11 @@ struct HomeScreen: View {
                     VStack(alignment:.center){
                         SignInButton(SignInWithAppleButton.Style.black)
                         //Navigation Link needed
-//                        NavigationLink("Hi")
+//                        NavigationView{
+//                            NavigationLink(destination: ArchivesView()){
+//                                Text("hi")
+//                            }.background(Color.white)
+//                        }
 //                        Spacer()
 //                        NavigationLink(des)
 //                        Button(action: {
