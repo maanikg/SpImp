@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 
-
 struct FinalScore: View {
     var userScore = 93.7
     var userColour: Color{
@@ -65,6 +64,7 @@ struct FinalScore: View {
             
             HStack{
                 NavigationLink(destination: HomeScreen()) {
+                    Image(systemName: "chevron.backward")
                     Text("Home Page")
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
@@ -75,6 +75,7 @@ struct FinalScore: View {
                 .bold()
                 
                 NavigationLink(destination: PastScore()) {
+                    Image(systemName: "list.bullet")
                     Text("Past Scores")
                 }
                 .frame(maxWidth: .infinity, alignment:.center)

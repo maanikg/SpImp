@@ -9,11 +9,9 @@ import Foundation
 import SwiftUI
 
 struct PastScore: View {
-    
-    
     var body: some View {
         Text("In construction")
-            .foregroundColor(.white)
+            .foregroundColor(.black)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }

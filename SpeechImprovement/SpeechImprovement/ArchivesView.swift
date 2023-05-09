@@ -7,14 +7,17 @@
 
 import SwiftUI
 
-struct Archives: View {
+struct ArchivesView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            
+            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        }
     }
 }
 
 struct Archives_Previews: PreviewProvider {
     static var previews: some View {
-        Archives()
+        ArchivesView()
     }
 }
