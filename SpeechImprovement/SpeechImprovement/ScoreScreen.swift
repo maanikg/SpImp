@@ -5,6 +5,8 @@
 //  Created by Tyler Yan on 2023-05-08.
 //
 
+//can we fix button size for the bottom buttons?
+
 import Foundation
 import SwiftUI
 
@@ -19,68 +21,74 @@ struct FinalScore: View {
             return .green
         }
     }
-        
+    
     var body: some View {
-        VStack{
-            ZStack{
-                Circle()
-                    .frame(width: 100, height: 100)
-                Text(String(userScore))
-                    .foregroundColor(userColour)
-                    .font(.title)
-            }
-            //.offset(y: )
-            ZStack{
-                ScrollView{
-                    Text("Bad:")
-                        .font(.title)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("• Talked too fast")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("• Should use better flow")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.bottom, 5)
-                    
-                    Text("Good:")
-                        .font(.title)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("• Great tone")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("• No stuttering")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.bottom, 5)
-                    
-                    Text("Tips:")
-                        .font(.title)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("• More effective spacing")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("• More convincing word choice")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                .frame(maxWidth: .infinity)
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            
-            HStack{
-                NavigationLink(destination: HomeScreen()) {
-                    Image(systemName: "chevron.backward")
-                    Text("Home Page")
-                }
-                .padding()
+        NavigationView{
+            VStack{
                 
-                NavigationLink(destination: PastScoreScreen()) {
-                    Image(systemName: "list.bullet")
-                    Text("Past Scores")
+                ZStack{
+                    Circle()
+                        .frame(width: 100, height: 100)
+                    Text(String(userScore))
+                        .foregroundColor(userColour)
+                        .font(.title)
                 }
-                .padding()
+                //.offset(y: )
+                ZStack{
+                    ScrollView{
+                        Text("Bad:")
+                            .font(.title)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Text("• Talked too fast")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Text("• Should use better flow")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.bottom, 5)
+                        
+                        Text("Good:")
+                            .font(.title)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Text("• Great tone")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Text("• No stuttering")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.bottom, 5)
+                        
+                        Text("Tips:")
+                            .font(.title)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Text("• More effective spacing")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Text("• More convincing word choice")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight:.infinity)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                HStack{
+                    NavigationLink(destination: HomeScreen()) {
+                        Image(systemName: "chevron.backward")
+                        Text("Home Page")
+                    }
+                    .frame(maxWidth: .infinity)
+                    .background(Color.black.opacity(0.25))
+                    .cornerRadius(8)
+                    .padding()
+                    
+                    NavigationLink(destination: PastScoreScreen()) {
+                        Image(systemName: "list.bullet")
+                        Text("Past Scores")
+                        
+                    }
+                    .frame(maxWidth: .infinity)
+                    .background(Color.black.opacity(0.25))
+                    .cornerRadius(8)
+                    .padding()
+                }.foregroundColor(Color.black)
             }
+            .padding()
+            .background(LinearGradient(colors: [Color.white, Color.indigo], startPoint: .top, endPoint: .bottom))
         }
-        .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(
-            LinearGradient(colors: [Color.white, Color.indigo], startPoint: .top, endPoint: .bottom)
-        )
     }
 }
 

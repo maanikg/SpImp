@@ -5,9 +5,15 @@
 //  Created by Maanik Gogna on 2023-05-08.
 //
 
+import Foundation
+
 struct ScoreList{
     
-//    let scores: [Score]
+    var scores: [Score] = []
 }
 
-//struct Score
+struct Score{
+    var datetime: Date //date, time of recording
+    var scoreVal: Int
+    var badFeatures, goodFeatures, tips: [String] //array of strings
+}
