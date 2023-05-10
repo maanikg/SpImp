@@ -29,7 +29,6 @@ struct ArchivedRunRow: View {
             Text(String(score.scoreVal))
                 .font(.title3)
         }
-//        .background(Color.orange)
             .padding()
     }
 }

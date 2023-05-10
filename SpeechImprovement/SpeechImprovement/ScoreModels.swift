@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+//struct Score:Identifiable, Hashable{
 struct Score{
     var date = Date() //date, time of recording
     var scoreVal: Double = 0

@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct PastScoreScreen: View {
+    var score:Score
     var body: some View {
         Text("Honestly, exact same code as Score screen")
             .foregroundColor(.black)
@@ -20,6 +21,6 @@ struct PastScoreScreen: View {
 
 struct PastScore_Preview: PreviewProvider {
     static var previews: some View {
-        PastScoreScreen()
+        PastScoreScreen(score:Score.example)
     }
 }
