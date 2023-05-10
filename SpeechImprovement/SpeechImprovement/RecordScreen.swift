@@ -6,6 +6,12 @@
 ////
 import SwiftUI
 import Foundation
+
+/*
+ When finished recording, we need to make a new Score struct that will store the audio and other attributes of the recording
+ 
+ */
+
 //import AppKit
 //
 //class StopWatch {

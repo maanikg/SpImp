@@ -25,7 +25,6 @@ struct FinalScore: View {
     var body: some View {
         NavigationView{
             VStack{
-                
                 ZStack{
                     Circle()
                         .frame(width: 100, height: 100)
@@ -33,7 +32,6 @@ struct FinalScore: View {
                         .foregroundColor(userColour)
                         .font(.title)
                 }
-                //.offset(y: )
                 ZStack{
                     ScrollView{
                         Text("Bad:")
@@ -66,18 +64,19 @@ struct FinalScore: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 HStack{
-                    NavigationLink(destination: HomeScreen()) {
+                    NavigationLink(destination: HomeScreen().navigationBarBackButtonHidden(true)) {
                         Image(systemName: "chevron.backward")
                         Text("Home Page")
+                        
                     }
                     .frame(maxWidth: .infinity)
                     .background(Color.black.opacity(0.25))
                     .cornerRadius(8)
                     .padding()
                     
-                    NavigationLink(destination: PastScoreScreen()) {
+                    NavigationLink(destination: ArchivesScreen().navigationBarBackButtonHidden(true)) {
                         Image(systemName: "list.bullet")
-                        Text("Past Scores")
+                        Text("All Scores")
                         
                     }
                     .frame(maxWidth: .infinity)
@@ -85,8 +84,12 @@ struct FinalScore: View {
                     .cornerRadius(8)
                     .padding()
                 }.foregroundColor(Color.black)
+                    
+                    
             }
             .padding()
+            .navigationTitle("Your Score")
+            .navigationBarTitleDisplayMode(.large)
             .background(LinearGradient(colors: [Color.white, Color.indigo], startPoint: .top, endPoint: .bottom))
         }
     }

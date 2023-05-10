@@ -7,7 +7,7 @@
 
 import SwiftUI
 import AuthenticationServices
-
+//var scoreArchive:ScoreList
 //@State private var username: String = ""
 let backgroundColor = LinearGradient(colors: [Color.white, Color.blue], startPoint: .top, endPoint: .bottom)
 let title = Text("Speech Improvement")

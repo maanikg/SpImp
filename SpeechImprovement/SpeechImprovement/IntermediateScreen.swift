@@ -60,7 +60,7 @@ struct IntermediateScreen: View {
                             Image(systemName:"return")
                                 .foregroundColor(Color.black)
                         }
-                        .background(Color.orange.opacity(0.25))
+                        .background(Color.indigo.opacity(0.25))
                         .cornerRadius(8)
                     }
                 }
