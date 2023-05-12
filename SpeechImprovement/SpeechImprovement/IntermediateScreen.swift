@@ -31,7 +31,7 @@ struct IntermediateScreen: View {
         VStack{
             NavigationView{
                 VStack{
-                    NavigationLink(destination: RecordScreen()){
+                    NavigationLink(destination: Record()){
                         Label{
                             Text("Press to go to recording screen")
                                 .multilineTextAlignment(.trailing)

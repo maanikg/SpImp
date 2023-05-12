@@ -12,27 +12,40 @@ struct ArchivesScreen: View {
 //    @EnvironmentObject var scoreData: ScoreData
     
     var body: some View {
-        NavigationView{
-            VStack{
-//                ForEach(scoreData.scores){$score in
-//                    NavigationLink{
-//                        PastScoreScreen(score: $score)
-//                    }label:{
-//                        ArchivedRunRow(score: $score)
-//                    }
-//                }
-                //                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/).bold()
-                
+        NavigationView(){
+            
+            List{
+//                Section(content: {
+                    ForEach(archive) { score in
+                        NavigationLink {
+                            PastScoreScreen(score:score)
+                        } label: {
+                            ArchivedRunRow(score: score)
+                        }
+                        .swipeActions {
+                            Button(role: .destructive) {
+                                //NEED TO CONFIGURE DELETE EVENT
+                                //eventData.delete(event)
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        }
+                    }
+//                    .listRowBackground(Color.blue)
+//                }, header: {
+//                    Text("temp")
+//                        .font(.callout)
+//                        .foregroundColor(.secondary)
+//                        .fontWeight(.bold)
+//                })
             }
+            .scrollContentBackground(.hidden)
+//            .foregroundColor(Color.purple)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(LinearGradient(colors: [Color.red, Color.orange], startPoint: .top, endPoint: .bottom))
-            .navigationBarTitleDisplayMode(.large)
-            .navigationTitle("Past Runs")
+            .background(LinearGradient(colors: [Color.orange, Color.yellow], startPoint: .top, endPoint: .bottom).ignoresSafeArea())
+                .navigationBarTitleDisplayMode(.large)
+                .navigationTitle("Past Runs")
         }
-        
-        
-        
-        
     }
 }
 
