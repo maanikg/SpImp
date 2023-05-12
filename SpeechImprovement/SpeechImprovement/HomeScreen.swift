@@ -18,69 +18,75 @@ struct HomeScreen: View {
     @State private var signIn = false
     @State private var register = false
     var body: some View {
-        ZStack{
-            //            TextField ("Name",
-            //                        text: .constant (""),
-            //                        prompt: Text ("Please enter your name here"))
-            //            SecureField("Password", text:.constant(""))
-            VStack {
-                CircleImage()
-                VStack(alignment:.center){
-                    //                    Text("Our First App!")
-                    title
-                    //                        .underline()
-                    Divider()
-                        .background(Color.black)
+        NavigationView(){
+            
+            ZStack{
+                //            TextField ("Name",
+                //                        text: .constant (""),
+                //                        prompt: Text ("Please enter your name here"))
+                //            SecureField("Password", text:.constant(""))
+                VStack {
+                    CircleImage()
                     VStack(alignment:.center){
-                        SignInButton(SignInWithAppleButton.Style.black)
-                        //Navigation Link needed
-//                        NavigationView{
-//                            NavigationLink(destination: ArchivesView()){
-//                                Text("hi")
-//                            }.background(Color.white)
-//                        }
-//                        Spacer()
-//                        NavigationLink(des)
-//                        Button(action: {
-//                            register=true
-//                        }){
-//                            Label("Register!", systemImage: "folder.badge.plus")
-//                                .foregroundColor(Color.black)
-//                                .bold()
-//                        }
-//                        .tint(Color.black)
-//                        .buttonStyle(.bordered)
+                        //                    Text("Our First App!")
+                        title
+                        //                        .underline()
+                        Divider()
+                            .background(Color.black)
+                        VStack(alignment:.center){
+                            SignInButton(SignInWithAppleButton.Style.black)
+                            //Navigation Link needed
+//                            NavigationView{
+                                NavigationLink(destination: IntermediateScreen().navigationBarBackButtonHidden(true)){
+                                    Text("Bypass to Intermediate Screen")
+                                }
+                                .buttonStyle(.bordered)
+                                .foregroundColor(Color.black)
+                                
+//                            }
+                            //                        Spacer()
+                            //                        NavigationLink(des)
+                            //                        Button(action: {
+                            //                            register=true
+                            //                        }){
+                            //                            Label("Register!", systemImage: "folder.badge.plus")
+                            //                                .foregroundColor(Color.black)
+                            //                                .bold()
+                            //                        }
+                            //                        .tint(Color.black)
+                            //                        .buttonStyle(.bordered)
+                        }
+                        //                    HStack {
+                        //                        Button(action: {
+                        //                            signIn=true
+                        //                        }){
+                        //                            Label("Sign In!", systemImage: "lock.open")
+                        //                                .foregroundColor(Color.black)
+                        //                                .bold()
+                        //                        }
+                        //                        Spacer()
+                        //                        Button(action: {
+                        //                            register=true
+                        //                        }){
+                        //                            Label("Register!", systemImage: "folder.badge.plus")
+                        //                                .foregroundColor(Color.black)
+                        //                                .bold()
+                        //
+                        //                        }
+                        //                        .tint(Color.black)
+                        //                    }.buttonStyle(.bordered)
+                        
+                        
                     }
-//                    HStack {
-//                        Button(action: {
-//                            signIn=true
-//                        }){
-//                            Label("Sign In!", systemImage: "lock.open")
-//                                .foregroundColor(Color.black)
-//                                .bold()
-//                        }
-//                        Spacer()
-//                        Button(action: {
-//                            register=true
-//                        }){
-//                            Label("Register!", systemImage: "folder.badge.plus")
-//                                .foregroundColor(Color.black)
-//                                .bold()
-//
-//                        }
-//                        .tint(Color.black)
-//                    }.buttonStyle(.bordered)
-                    
-                    
+                    .padding()
                 }
                 .padding()
+                //        .ignoresSafeArea()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                //        .background(Color.blue.gradient)
+                .background(backgroundColor)
+                
             }
-            .padding()
-            //        .ignoresSafeArea()
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            //        .background(Color.blue.gradient)
-            .background(backgroundColor)
-            
         }
     }
     
