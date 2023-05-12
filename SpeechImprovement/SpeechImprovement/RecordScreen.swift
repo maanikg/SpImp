@@ -4,24 +4,35 @@
 ////
 ////  Created by Tyler Yan on 2023-05-07.
 ////
+
 import SwiftUI
 import Foundation
-import UIKit
+//import UIKit
 import AVKit
 
 class StopWatch {
     var startTime: Date?
     var timer: Timer?
     var curTime: TimeInterval = 0.0
+    var temp = 0.0
     
     func start() {
         startTime = Date()
-        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
-            timer in self.curTime = -(self.startTime?.timeIntervalSinceNow ?? 0.0)
+        if(curTime == 0.0) {
+            timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {
+                timer in self.curTime = -(self.startTime?.timeIntervalSinceNow ?? 0.0)
+            }
+        }
+        else {
+            
+            timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {
+                timer in self.curTime = -(self.startTime?.timeIntervalSinceNow ?? 0.0) + self.temp
+            }
         }
     }
     
     func stop() {
+        temp = self.curTime
         timer?.invalidate()
         timer = nil
         startTime = nil
@@ -32,8 +43,6 @@ class StopWatch {
         curTime = 0.0
     }
 }
-
-
 
 struct Record: View {
     
@@ -47,7 +56,9 @@ struct Record: View {
     @State var audios: [URL] = []
     @State var isPresented = false
     @State var shouldNavigate = false
-    @State private var temp: Bool = true
+    @State var display: Bool = false
+    @State var minute = 0
+    @State var timerDisplay: Timer?
    
     var tapGesture: some Gesture {
         TapGesture()
@@ -57,7 +68,8 @@ struct Record: View {
                     if(recording) {
                         do {
                             stopwatch.start()
-                            let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                            display = false
+                          /*  let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
                             
                             // same file name...
                             // so were updating based on audio count...
@@ -74,20 +86,21 @@ struct Record: View {
                             
                             self.recorder = try AVAudioRecorder(url: filName, settings: settings)
                             self.recorder.record()
-                            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {  _ in
+                           */
+                            timerDisplay = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {  _ in
                                 updateElapsedTime()
                             }
-                        }
-                        catch {
-                            print(error.localizedDescription)
                         }
                     }
                     else {
                         stopwatch.stop()
-                        self.recorder.pause()
-                        self.isPresented = true
+                        display.toggle()
+                        timerDisplay?.invalidate()
+                        //self.recorder.pause()
+                        
+                        
                         // Create pop up window to go to score or to keep recording
-                        let alert = UIAlertController(title: "Recording", message: "Would you like to continue recording?", preferredStyle: .alert)
+                        /*let alert = UIAlertController(title: "Recording", message: "Would you like to continue recording?", preferredStyle: .alert)
                         let doneAction = UIAlertAction(title: "Done", style: .default) { (_) in
                                 // Do something when OK is tapped
                                 // This can be left blank if you just want the window to dismiss
@@ -113,7 +126,7 @@ struct Record: View {
                            let sceneDelegate = windowScene.delegate as? SceneDelegate,
                            let viewController = sceneDelegate.window?.rootViewController {
                                viewController.present(alert, animated: true, completion: nil)
-                        }
+                        }*/
                            
                 
                         }
@@ -122,30 +135,55 @@ struct Record: View {
     }
     
     func updateElapsedTime() {
-        timeLabel = String(format: "%.1f", stopwatch.curTime)
+        if(Int(stopwatch.curTime) % 60 == 0 && Int(stopwatch.curTime) != 0) {
+            minute += 1
+        }
+        timeLabel = String(format: "%02d:%02d", Int(minute), Int(stopwatch.curTime)%60)
     }
     
     var body: some View {
-        VStack{
-            Text(!recording ? "Press to start recording" : "Press to finish recording")
-                .font(.title)
-                .bold()
-            Image(!recording ? "notRecording" : "recording")
-                .shadow(radius: 40)
-                .gesture(tapGesture)
-            Text(timeLabel)
-                .font(.title)
-                .bold()
-            if shouldNavigate {
-                NavigationLink(destination: FinalScore()) {
-                    
+        NavigationView{
+            VStack{
+                Text(!recording ? "Press to start recording" : "Press to finish recording")
+                    .font(.title)
+                    .bold()
+                Image(!recording ? "notRecording" : "recording")
+                    .shadow(radius: 40)
+                    .gesture(tapGesture)
+                Text(timeLabel)
+                    .font(.title)
+                    .bold()
+                HStack{
+                    Button(action: {
+                        stopwatch.reset()
+                        timerDisplay?.invalidate()
+                        timeLabel = String(format: "%02d:%02d", 0, 0)
+                        recording = false
+                        minute = 0
+                    }) {
+                              Text("Reset")
+                            .font(.title)
+                            .bold()
+                            .padding()
+                          }
+                    NavigationLink(destination: FinalScore()){
+                        Text("Done")
+                            .font(.title)
+                            .bold()
+                            .padding()
+                        
+                    }
+                    .disabled(!display)
                 }
-                .frame(width: 0, height: 0)
-                .hidden()
-                
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background()
+            LinearGradient(colors: [Color.white, !recording ? Color.blue : Color.indigo], startPoint: .top, endPoint: .bottom)
+            }
+            
         }
-        .onAppear {
+        
+        /*.onAppear {
             do {
                 self.session = AVAudioSession.sharedInstance()
                 try self.session.setCategory(.playAndRecord)
@@ -162,14 +200,12 @@ struct Record: View {
             catch {
                 print(error.localizedDescription)
             }
-        }
-        .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(
-            LinearGradient(colors: [Color.white, !recording ? Color.blue : Color.indigo], startPoint: .top, endPoint: .bottom)
-        )
+        }*/
+        
+        
     }
     
+/*
     func getAudios() {
         do {
             let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -193,38 +229,7 @@ struct Record: View {
     }
 }
 
-struct PopUp: View {
-    @Binding var shouldNavigate: Bool
-    @Environment(\.presentationMode) var presentationMode
-    var body: some View {
-        VStack {
-            Text("Pop-Up Window")
-                .font(.title)
-                .padding()
-            
-            Button("Continue Recording") {
-                self.dismiss()
-            }
-            .padding()
-            
-            Button("Done") {
-                self.shouldNavigate = true
-                self.dismiss()
-            }
-            .padding()
-        }
-        .padding()
-        .background(Color.white)
-        .cornerRadius(10)
-        .shadow(radius: 5)
-    }
-    
-    private func dismiss() {
-        self.shouldNavigate = false
-        presentationMode.wrappedValue.dismiss()
-    }
-}
-
+*/
 
 struct Record_Previews: PreviewProvider {
     static var previews: some View {
