@@ -166,6 +166,7 @@ struct Record: View {
                             .bold()
                             .padding()
                           }
+                    //need to fix done destination link
                     NavigationLink(destination: FinalScore()){
                         Text("Done")
                             .font(.title)
