@@ -18,7 +18,7 @@ struct HomeScreen: View {
     @State private var signIn = false
     @State private var register = false
     var body: some View {
-        NavigationView(){
+        NavigationStack(){
             
             ZStack{
                 //            TextField ("Name",

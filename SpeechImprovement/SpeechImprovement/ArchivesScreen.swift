@@ -12,7 +12,7 @@ struct ArchivesScreen: View {
 //    @EnvironmentObject var scoreData: ScoreData
     
     var body: some View {
-        NavigationView(){
+        NavigationStack(){
             
             List{
 //                Section(content: {
