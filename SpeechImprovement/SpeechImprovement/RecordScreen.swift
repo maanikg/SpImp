@@ -100,8 +100,7 @@ class StopWatch {
 struct Record: View {
     
     @State private var recording: Bool = false
-    @State private var timeLabel:
-    String = "00:00"
+    @State private var timeLabel: String = "00:00"
     @State var stopwatch = StopWatch()
     @State var session: AVAudioSession!
     @State var recorder: AVAudioRecorder!
@@ -118,16 +117,16 @@ struct Record: View {
     @State var hasMicrophoneAccessDenied = AVCaptureDevice.authorizationStatus(for: .audio).rawValue == AVAuthorizationStatus.denied.rawValue ||  AVCaptureDevice.authorizationStatus(for: .audio).rawValue == AVAuthorizationStatus.restricted.rawValue
     
     enum SystemAudioClassificationError: Error {
-
+        
         /// The app encounters an interruption during audio recording.
         case audioStreamInterrupted
-
+        
         /// The app doesn't have permission to access microphone input.
         case noMicrophoneAccess
     }
     
     private func ensureMicrophoneAccess() throws {
-//        var hasMicrophoneAccess = false
+        //        var hasMicrophoneAccess = false
         //        print(AVCaptureDevice.authorizationStatus(for: .audio).rawValue)
         switch AVCaptureDevice.authorizationStatus(for: .audio) {
         case .notDetermined:
@@ -146,7 +145,7 @@ struct Record: View {
         @unknown default:
             fatalError("unknown authorization status for microphone access")
         }
-
+        
         if !hasMicrophoneAccess {
             throw SystemAudioClassificationError.noMicrophoneAccess
         }
@@ -163,7 +162,7 @@ struct Record: View {
             throw error
         }
     }
-
+    
     /// Deactivates the app's AVAudioSession.
     private func stopAudioSession() {
         autoreleasepool {
@@ -268,100 +267,114 @@ struct Record: View {
     
     var body: some View {
         NavigationView{
-            VStack{
-                Text(hasMicrophoneAccessDenied ? "Please enable mic access" : !recording ? "Press to start recording" : "Press to finish recording")
-                    .font(.title)
-                    .bold()
-                Image(hasMicrophoneAccessDenied ? "notPermittedToRecord" : !recording ? "notRecording" : "recording")
-                    .shadow(radius: 40)
-                    .gesture(tapGesture)
-                Text(timeLabel)
-                    .font(.title)
-                    .bold()
-                HStack{
-                    Button(action: {
-                        stopwatch.reset()
-                        records.restartRecording()
-                        timerDisplay?.invalidate()
-                        timeLabel = String(format: "%02d:%02d", 0, 0)
-                        recording = false
-                        minute = 0
-                        display = false
-                    }) {
-                        Text("Reset")
-                            .font(.title)
-                            .bold()
-                            .padding()
+            ZStack{
+                VStack{
+                    Text(!recording ? "Press to start recording" : "Press to finish recording")
+                        .font(.title)
+                        .bold()
+                    Image(hasMicrophoneAccessDenied ? "notPermittedToRecord" : !recording ? "notRecording" : "recording")
+                        .shadow(radius: 40)
+                        .gesture(tapGesture)
+                    
+                    Text(timeLabel)
+                        .font(.title)
+                        .bold()
+                    HStack{
+                        Button(action: {
+                            stopwatch.reset()
+                            records.restartRecording()
+                            timerDisplay?.invalidate()
+                            timeLabel = String(format: "%02d:%02d", 0, 0)
+                            recording = false
+                            minute = 0
+                            display = false
+                        }) {
+                            Text("Reset")
+                                .font(.title)
+                                .bold()
+                                .padding()
+                        }
+                        NavigationLink(destination: FinalScore()) {
+                            Text("Done")
+                                .font(.title)
+                                .bold()
+                                .padding()
+                        }
+                        .disabled(!display)
+                        .simultaneousGesture(TapGesture().onEnded {
+                            records.stopRecording()
+                        })
                     }
-                    NavigationLink(destination: FinalScore()) {
-                        Text("Done")
-                            .font(.title)
-                            .bold()
-                            .padding()
-                    }
-                    .disabled(!display)
-                    .simultaneousGesture(TapGesture().onEnded {
-                        records.stopRecording()
-                    })
                 }
+                .blur(radius: !hasMicrophoneAccessDenied ? 0.0 : 10.0)
+                .disabled(hasMicrophoneAccessDenied)
+                VStack {
+                    Text("Please enable mic access in settings")
+                        .padding()
+                        .font(.largeTitle)
+                        .multilineTextAlignment(.center)
+                        .bold()
+                }
+                .opacity(!hasMicrophoneAccessDenied ? 0.0 : 1.0)
+                .disabled(!hasMicrophoneAccessDenied)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background()
-            LinearGradient(colors: [Color.white, !recording ? Color.blue : Color.indigo], startPoint: .top, endPoint: .bottom)
+            .background(LinearGradient(colors: [hasMicrophoneAccessDenied ? Color.black : Color.white, !recording ? Color.blue : Color.indigo], startPoint: .top, endPoint: .bottom))
+            let _ = print(hasMicrophoneAccessDenied.description)
+
         }
+        
+        /*.onAppear {
+         do {
+         self.session = AVAudioSession.sharedInstance()
+         try self.session.setCategory(.playAndRecord)
+         
+         self.session.requestRecordPermission { (status) in
+         if !status {
+         self.alert.toggle()
+         }
+         else {
+         self.getAudios()
+         }
+         }
+         }
+         catch {
+         print(error.localizedDescription)
+         }
+         }*/
+        
         
     }
     
-    /*.onAppear {
+    /*
+     func getAudios() {
      do {
-     self.session = AVAudioSession.sharedInstance()
-     try self.session.setCategory(.playAndRecord)
+     let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
      
-     self.session.requestRecordPermission { (status) in
-     if !status {
-     self.alert.toggle()
+     // fetch all data from document directory...
+     
+     let result = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: .producesRelativePathURLs)
+     
+     // updated means remove all old data..
+     
+     self.audios.removeAll()
+     
+     for i in result{
+     
+     self.audios.append(i)
      }
-     else {
-     self.getAudios()
      }
-     }
-     }
-     catch {
+     catch{
      print(error.localizedDescription)
      }
-     }*/
+     }
+     }
+     
+     */
     
-    
-}
-
-/*
- func getAudios() {
- do {
- let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
- 
- // fetch all data from document directory...
- 
- let result = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: .producesRelativePathURLs)
- 
- // updated means remove all old data..
- 
- self.audios.removeAll()
- 
- for i in result{
- 
- self.audios.append(i)
- }
- }
- catch{
- print(error.localizedDescription)
- }
- }
- }
- 
- */
-
-struct Record_Previews: PreviewProvider {
-    static var previews: some View {
-        Record()
+    struct Record_Previews: PreviewProvider {
+        static var previews: some View {
+            Record()
+        }
     }
 }
