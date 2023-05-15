@@ -10,6 +10,57 @@ import Foundation
 //import UIKit
 import AVKit
 
+import AVFoundation
+
+class AudioRecorder {
+    private var audioRecorder: AVAudioRecorder?
+
+    func startRecording(value: Bool) {
+        if(value)
+        {
+            audioRecorder?.record()
+        }
+        else
+        {
+            let audioSession = AVAudioSession.sharedInstance()
+            do {
+                try audioSession.setCategory(.playAndRecord, mode: .default, options: [.mixWithOthers, .allowBluetooth, .allowAirPlay])
+                try audioSession.setActive(true)
+                let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                let soundFilePath = documentPath.appendingPathComponent("audioRecording.m4a")
+                let settings = [AVFormatIDKey: Int(kAudioFormatMPEG4AAC), AVSampleRateKey: 12000, AVNumberOfChannelsKey: 1, AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
+                audioRecorder = try AVAudioRecorder(url: soundFilePath, settings: settings)
+                audioRecorder?.prepareToRecord()
+                audioRecorder?.record()
+            } catch let error {
+                print("Error while recording audio: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func pauseRecording() {
+        audioRecorder?.pause()
+    }
+    
+    func restartRecording() {
+        audioRecorder?.stop()
+        audioRecorder?.deleteRecording()
+        audioRecorder = nil
+        self.startRecording(value: false)
+    }
+
+    func stopRecording() {
+        audioRecorder?.stop()
+        audioRecorder = nil
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setActive(false)
+        } catch let error {
+            print("Error while stopping audio recording: \(error.localizedDescription)")
+        }
+    }
+}
+
 class StopWatch {
     var startTime: Date?
     var timer: Timer?
@@ -59,6 +110,8 @@ struct Record: View {
     @State var display: Bool = false
     @State var minute = 0
     @State var timerDisplay: Timer?
+    @State var records = AudioRecorder()
+    @State var track = false
    
     var tapGesture: some Gesture {
         TapGesture()
@@ -67,8 +120,10 @@ struct Record: View {
                     recording = !recording;
                     if(recording) {
                         do {
+                            records.startRecording(value: track)
                             stopwatch.start()
                             display = false
+                            track = true
                           /*  let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
                             
                             // same file name...
@@ -93,6 +148,7 @@ struct Record: View {
                         }
                     }
                     else {
+                        records.pauseRecording()
                         stopwatch.stop()
                         display.toggle()
                         timerDisplay?.invalidate()
@@ -156,25 +212,28 @@ struct Record: View {
                 HStack{
                     Button(action: {
                         stopwatch.reset()
+                        records.restartRecording()
                         timerDisplay?.invalidate()
                         timeLabel = String(format: "%02d:%02d", 0, 0)
                         recording = false
                         minute = 0
+                        display = false
                     }) {
                               Text("Reset")
                             .font(.title)
                             .bold()
                             .padding()
                           }
-                    //need to fix done destination link
-                    NavigationLink(destination: FinalScore()){
+                    NavigationLink(destination: FinalScore()) {
                         Text("Done")
                             .font(.title)
                             .bold()
                             .padding()
-                        
                     }
                     .disabled(!display)
+                    .simultaneousGesture(TapGesture().onEnded {
+                        records.stopRecording()
+                    })
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
