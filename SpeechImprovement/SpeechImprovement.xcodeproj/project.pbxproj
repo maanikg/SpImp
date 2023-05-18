@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4809E1DF2A0831CB003F954C /* RecordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4809E1DE2A0831CB003F954C /* RecordScreen.swift */; };
-		482A775B2A098DDA00E3DF89 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 482A77572A098DDA00E3DF89 /* Preview Content */; };
 		482A77792A0BFBBB00E3DF89 /* ScoreModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A77722A0BFBBB00E3DF89 /* ScoreModels.swift */; };
 		482A777A2A0BFBBB00E3DF89 /* ScoreScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A77732A0BFBBB00E3DF89 /* ScoreScreen.swift */; };
 		482A777B2A0BFBBB00E3DF89 /* PastScoreScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A77742A0BFBBB00E3DF89 /* PastScoreScreen.swift */; };
@@ -44,7 +43,6 @@
 
 /* Begin PBXFileReference section */
 		4809E1DE2A0831CB003F954C /* RecordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordScreen.swift; sourceTree = "<group>"; };
-		482A77572A098DDA00E3DF89 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Content"; sourceTree = "<group>"; };
 		482A77722A0BFBBB00E3DF89 /* ScoreModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreModels.swift; sourceTree = "<group>"; };
 		482A77732A0BFBBB00E3DF89 /* ScoreScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreScreen.swift; sourceTree = "<group>"; };
 		482A77742A0BFBBB00E3DF89 /* PastScoreScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastScoreScreen.swift; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 			isa = PBXGroup;
 			children = (
 				48E6946A2A12B50000150E3C /* Info.plist */,
-				482A77572A098DDA00E3DF89 /* Preview Content */,
 				4838DCE82A0318F70045380C /* SpeechImprovementApp.swift */,
 				4838DD4A2A0327BB0045380C /* HomeScreen.swift */,
 				482A77752A0BFBBB00E3DF89 /* ArchivedRunRow.swift */,
@@ -252,7 +249,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				482A775B2A098DDA00E3DF89 /* Preview Content in Resources */,
 				4838DCED2A0318FA0045380C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,7 +444,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SpeechImprovement/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 425XHL28D4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -481,7 +477,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SpeechImprovement/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 425XHL28D4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

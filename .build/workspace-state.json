@@ -1,0 +1,27 @@
+{
+  "object" : {
+    "artifacts" : [
+
+    ],
+    "dependencies" : [
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "pythonkit",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/pvieito/PythonKit.git",
+          "name" : "PythonKit"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "81f621d094a7c8923207efe5178f50dba1b56c39",
+            "version" : "0.3.1"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "PythonKit"
+      }
+    ]
+  },
+  "version" : 6
+}
