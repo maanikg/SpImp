@@ -7,15 +7,18 @@
 
 import SwiftUI
 import Foundation
-//import UIKit
+import UIKit
 import AVKit
 import Speech
 
 import AVFoundation
 
+
+
 class AudioRecorder{
     
     private var audioRecorder: AVAudioRecorder?
+    private var audioPlayer: AVAudioPlayer?
     
     func startRecording(value: Bool) {
         if(value)
@@ -28,10 +31,17 @@ class AudioRecorder{
             do {
                 try audioSession.setCategory(.playAndRecord, mode: .default, options: [.mixWithOthers, .allowBluetooth, .allowAirPlay])
                 try audioSession.setActive(true)
-                let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-                let soundFilePath = documentPath.appendingPathComponent("audioRecording.m4a")
-                let settings = [AVFormatIDKey: Int(kAudioFormatMPEG4AAC), AVSampleRateKey: 12000, AVNumberOfChannelsKey: 1, AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
+                let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+                let soundFilePath = documentPath[0].appendingPathComponent("audioRecording.m4a")
+                let settings: [String: Any] = [ AVFormatIDKey: kAudioFormatAppleLossless,
+                    AVEncoderAudioQualityKey: AVAudioQuality.max.rawValue,
+                    AVEncoderBitRateKey: 32000,
+                    AVNumberOfChannelsKey: 2,
+                    AVSampleRateKey: 44100.0
+                ]
+                
                 audioRecorder = try AVAudioRecorder(url: soundFilePath, settings: settings)
+                audioRecorder?.isMeteringEnabled = true
                 audioRecorder?.prepareToRecord()
                 audioRecorder?.record()
             } catch let error {
@@ -48,12 +58,24 @@ class AudioRecorder{
         audioRecorder?.stop()
         audioRecorder?.deleteRecording()
         audioRecorder = nil
-        self.startRecording(value: false)
+        //self.startRecording(value: false)
     }
     
     func stopRecording() {
         audioRecorder?.stop()
-        audioRecorder = nil
+        
+        let fileManager = FileManager.default
+        let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let soundFilePath = documentPath[0].appendingPathComponent("audioRecording.m4a")
+        if fileManager.fileExists(atPath:soundFilePath.path) {
+            print("Audio file exists")
+            let rec = audioRecorder
+            audioPlayer = try? AVAudioPlayer(contentsOf: rec!.url)
+                audioPlayer?.play()
+            //audioRecorder = nil
+        } else {
+            print("Audio file does not exist")
+        }
         let audioSession = AVAudioSession.sharedInstance()
         do {
             try audioSession.setActive(false)
@@ -103,7 +125,7 @@ struct Record: View {
     @State private var timeLabel: String = "00:00"
     @State var stopwatch = StopWatch()
     @State var session: AVAudioSession!
-    @State var recorder: AVAudioRecorder!
+    @State var recorder = AVAudioRecorder()
     @State var alert = false
     @State var audios: [URL] = []
     @State var isPresented = false
@@ -124,6 +146,8 @@ struct Record: View {
         /// The app doesn't have permission to access microphone input.
         case noMicrophoneAccess
     }
+    
+    
     
     private func ensureMicrophoneAccess() throws {
         //        var hasMicrophoneAccess = false
@@ -175,17 +199,17 @@ struct Record: View {
     var tapGesture: some Gesture {
         TapGesture()
             .onEnded {
-                if (hasMicrophoneAccess){
+                if (true){//hasMicrophoneAccess){
                     
                     withAnimation {
                         recording = !recording;
                         if(recording) {
                             do {
-                                try ensureMicrophoneAccess()
-                                try startAudioSession()
-                            }catch{
-                                stopAudioSession()
-                            }
+                                //try ensureMicrophoneAccess()
+                                //try startAudioSession()
+                            }//catch{
+                               // stopAudioSession()
+                            //}
                             do {
                                 records.startRecording(value: track)
                                 stopwatch.start()
@@ -282,6 +306,7 @@ struct Record: View {
                     HStack{
                         Button(action: {
                             stopwatch.reset()
+                            track = false
                             records.restartRecording()
                             timerDisplay?.invalidate()
                             timeLabel = String(format: "%02d:%02d", 0, 0)
