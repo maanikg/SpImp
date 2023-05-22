@@ -65,19 +65,18 @@ class AudioRecorder{
         audioRecorder?.stop()
         
         let fileManager = FileManager.default
-        let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
         let soundFilePath = documentPath[0].appendingPathComponent("audioRecording.m4a")
         if fileManager.fileExists(atPath:soundFilePath.path) {
-            print("Audio file exists")
             let rec = audioRecorder
             audioPlayer = try? AVAudioPlayer(contentsOf: rec!.url)
                 audioPlayer?.play()
-            print("here")
             //audioRecorder = nil
         } else {
             print("Audio file does not exist")
         }
         let audioSession = AVAudioSession.sharedInstance()
+        archive.append(Score(date: Date.now, storedFilename: soundFilePath.absoluteString))
         do {
             try audioSession.setCategory(.playback)
         } catch let error {
@@ -320,7 +319,8 @@ struct Record: View {
                                 .bold()
                                 .padding()
                         }
-                        NavigationLink(destination: FinalScore()) {
+                        NavigationLink(destination: FinalScore().navigationBarBackButtonHidden(true))
+                        {
                             Text("Done")
                                 .font(.title)
                                 .bold()
@@ -346,7 +346,7 @@ struct Record: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(LinearGradient(colors: [hasMicrophoneAccessDenied ? Color.black : Color.white, !recording ? Color.blue : Color.indigo], startPoint: .top, endPoint: .bottom))
-            let _ = print(hasMicrophoneAccessDenied.description)
+//            let _ = print(hasMicrophoneAccessDenied.description)
 
         }
         
