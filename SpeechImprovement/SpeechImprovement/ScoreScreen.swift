@@ -28,8 +28,10 @@ struct FinalScore: View {
                 ZStack{
                     Circle()
                         .frame(width: 100, height: 100)
+                        .foregroundColor(Color.black)
                     Text(String(userScore))
                         .foregroundColor(userColour)
+                        .bold()
                         .font(.title)
                 }
                 ZStack{
@@ -67,21 +69,18 @@ struct FinalScore: View {
                     NavigationLink(destination: HomeScreen().navigationBarBackButtonHidden(true)) {
                         Image(systemName: "chevron.backward")
                         Text("Home Page")
-                        
                     }
-                    .frame(maxWidth: .infinity)
-                    .background(Color.black.opacity(0.25))
-                    .cornerRadius(8)
+                    .tint(Color.black.opacity(0.25))
+                    .buttonStyle(.borderedProminent)
                     .padding()
                     
                     NavigationLink(destination: ArchivesScreen().navigationBarBackButtonHidden(true)) {
                         Image(systemName: "list.bullet")
                         Text("All Scores")
-                        
+                            
                     }
-                    .frame(maxWidth: .infinity)
-                    .background(Color.black.opacity(0.25))
-                    .cornerRadius(8)
+                    .tint(Color.black.opacity(0.25))
+                    .buttonStyle(.borderedProminent)
                     .padding()
                 }.foregroundColor(Color.black)
                     
@@ -90,7 +89,8 @@ struct FinalScore: View {
             .padding()
             .navigationTitle("Your Score")
             .navigationBarTitleDisplayMode(.large)
-            .background(LinearGradient(colors: [Color.white, Color.indigo], startPoint: .top, endPoint: .bottom))
+            .foregroundColor(.black)
+            .background(LinearGradient(colors: [Color.red, Color.indigo], startPoint: .top, endPoint: .bottom))
         }
     }
 }
