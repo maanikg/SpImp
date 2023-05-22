@@ -72,13 +72,14 @@ class AudioRecorder{
             let rec = audioRecorder
             audioPlayer = try? AVAudioPlayer(contentsOf: rec!.url)
                 audioPlayer?.play()
+            print("here")
             //audioRecorder = nil
         } else {
             print("Audio file does not exist")
         }
         let audioSession = AVAudioSession.sharedInstance()
         do {
-            try audioSession.setActive(false)
+            try audioSession.setCategory(.playback)
         } catch let error {
             print("Error while stopping audio recording: \(error.localizedDescription)")
         }
@@ -199,15 +200,15 @@ struct Record: View {
     var tapGesture: some Gesture {
         TapGesture()
             .onEnded {
-                if (true){//hasMicrophoneAccess){
+//                if (true){//hasMicrophoneAccess){
                     
                     withAnimation {
                         recording = !recording;
                         if(recording) {
-                            do {
+//                            do {
                                 //try ensureMicrophoneAccess()
                                 //try startAudioSession()
-                            }//catch{
+//                            }//catch{
                                // stopAudioSession()
                             //}
                             do {
@@ -276,7 +277,7 @@ struct Record: View {
                              }*/
                             
                             
-                        }
+//                        }
                     }
                 }
             }
