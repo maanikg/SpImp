@@ -303,33 +303,42 @@ struct Record: View {
                     Text(timeLabel)
                         .font(.title)
                         .bold()
-                    HStack{
-                        Button(action: {
-                            stopwatch.reset()
-                            track = false
-                            records.restartRecording()
-                            timerDisplay?.invalidate()
-                            timeLabel = String(format: "%02d:%02d", 0, 0)
-                            recording = false
-                            minute = 0
-                            display = false
-                        }) {
-                            Text("Reset")
-                                .font(.title)
-                                .bold()
-                                .padding()
+                    VStack{
+                        
+                        HStack{
+                            Button(action: {
+                                stopwatch.reset()
+                                track = false
+                                records.restartRecording()
+                                timerDisplay?.invalidate()
+                                timeLabel = String(format: "%02d:%02d", 0, 0)
+                                recording = false
+                                minute = 0
+                                display = false
+                            }) {
+                                Text("Reset")
+                                    .font(.title)
+                                    .bold()
+                                    .padding()
+                            }
+                            NavigationLink(destination: FinalScore().navigationBarBackButtonHidden(true))
+                            {
+                                Text("Done")
+                                    .font(.title)
+                                    .bold()
+                                    .padding()
+                            }
+                            .disabled(!display)
+                            .simultaneousGesture(TapGesture().onEnded {
+                                records.stopRecording()
+                            })
                         }
-                        NavigationLink(destination: FinalScore().navigationBarBackButtonHidden(true))
-                        {
-                            Text("Done")
-                                .font(.title)
-                                .bold()
-                                .padding()
+                        NavigationLink(destination: ArchivesScreen().navigationBarBackButtonHidden(true)) {
+                            Image(systemName: "list.bullet") 
+                            Text("Past Runs")
                         }
-                        .disabled(!display)
-                        .simultaneousGesture(TapGesture().onEnded {
-                            records.stopRecording()
-                        })
+                        .tint(Color.black.opacity(0.25))
+                        .buttonStyle(.borderedProminent)
                     }
                 }
                 .blur(radius: !hasMicrophoneAccessDenied ? 0.0 : 10.0)

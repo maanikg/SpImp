@@ -33,7 +33,7 @@ struct ArchivedRunRow: View {
             Text(String(score.scoreVal))
                 .font(.title3)
         }
-            .padding()
+//            .padding()
     }
 }
 
