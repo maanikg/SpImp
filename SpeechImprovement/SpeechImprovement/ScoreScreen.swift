@@ -70,9 +70,15 @@ struct FinalScore: View {
                     Text("Listen to recording")
                         .font(.title3)
                         .bold()
+                        .frame(alignment: .leading)
                 }
                 .tint(Color.black.opacity(0.25))
                 .buttonStyle(.borderedProminent)
+                
+                Text((score.duration.hours != 0 ? "\(score.duration.hours) hrs: " : "") + (score.duration.minutes != 0 ? "\(score.duration.minutes) mins: ": "") + (score.duration.seconds != 0 ? "\(score.duration.seconds) secs": ""))
+                    .font(.title2)
+                Divider()
+                    .background(.black)
                 
                 ScrollView{
                     VStack{

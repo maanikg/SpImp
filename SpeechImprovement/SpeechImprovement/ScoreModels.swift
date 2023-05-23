@@ -10,6 +10,12 @@ import SwiftUI
 
 var run = 1
 //struct Score:Identifiable, Hashable{
+extension TimeInterval{
+    var hours: Int {return Int(self.rounded())/3600}
+    var minutes: Int{return (Int(self.rounded())-hours*3600)/60}
+    var seconds: Int{return Int(self.rounded())%60}
+}
+
 struct Score : Identifiable{
 //    var run:Int = 1
     var date: Date //date, time of recording
@@ -25,8 +31,6 @@ struct Score : Identifiable{
     var duration: TimeInterval = TimeInterval()
 //    var scoreColor: Color = Color(red:1.0-Double(scoreVal), green: scoreVal, blue:0.0)
     var scoreColor:Color = Color.black
-//    var id: String{scoreName+String(scoreVal)}
-//    var id: String{storedFilename}
     var id: Int = 0
     
     init(date: Date = Date.now, scoreVal: Double = 50, badFeatures: [String] = [], goodFeatures: [String] = [], tips:[String] = [], fullPath:String = "", storedFilename: String = "temp", duration: TimeInterval = TimeInterval(0), scoreColor: Color = .black) {
