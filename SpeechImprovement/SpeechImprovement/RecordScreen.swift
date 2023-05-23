@@ -13,7 +13,7 @@ import Speech
 
 import AVFoundation
 
-
+//var mostRecentScore:Score = Score()
 
 class AudioRecorder{
     
@@ -68,19 +68,9 @@ class AudioRecorder{
         let documentPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
         let soundFilePath = documentPath[0].appendingPathComponent("audioRecording\(archive.count+1).m4a")
         if fileManager.fileExists(atPath:soundFilePath.path) {
-            let rec = audioRecorder
-            audioPlayer = try? AVAudioPlayer(contentsOf: rec!.url)
-                audioPlayer?.play()
-            //audioRecorder = nil
+            archive.append(Score(date: Date.now, fullPath: soundFilePath.path, storedFilename: "audioRecording\(archive.count+1).m4a", duration: ti))
         } else {
             print("Audio file does not exist")
-        }
-        let audioSession = AVAudioSession.sharedInstance()
-        archive.append(Score(date: Date.now, storedFilename: soundFilePath.absoluteString, duration: ti))
-        do {
-            try audioSession.setCategory(.playback)
-        } catch let error {
-            print("Error while stopping audio recording: \(error.localizedDescription)")
         }
     }
 }
@@ -135,6 +125,7 @@ struct Record: View {
     @State var timerDisplay: Timer?
     @State var records = AudioRecorder()
     @State var track = false
+    @State var mostRecentScore:Score? = archive.last
     @State var hasMicrophoneAccess = AVCaptureDevice.authorizationStatus(for: .audio).rawValue == AVAuthorizationStatus.authorized.rawValue
     @State var hasMicrophoneAccessDenied = AVCaptureDevice.authorizationStatus(for: .audio).rawValue == AVAuthorizationStatus.denied.rawValue ||  AVCaptureDevice.authorizationStatus(for: .audio).rawValue == AVAuthorizationStatus.restricted.rawValue
     
@@ -322,7 +313,7 @@ struct Record: View {
                                     .bold()
                                     .padding()
                             }.buttonStyle(.borderedProminent)
-                            NavigationLink(destination: FinalScore(score:archive.first!).navigationBarBackButtonHidden(true))
+                            NavigationLink(destination: FinalScore(score:mostRecentScore!).navigationBarBackButtonHidden(true))
                             {
                                 Text("Done")
                                     .font(.title)
@@ -333,6 +324,7 @@ struct Record: View {
                             .disabled(!display)
                             .simultaneousGesture(TapGesture().onEnded {
                                 records.stopRecording(ti: stopwatch.curTime)
+                                mostRecentScore = archive.last!
                             })
                         }
                         NavigationLink(destination: ArchivesScreen().navigationBarBackButtonHidden(true)) {

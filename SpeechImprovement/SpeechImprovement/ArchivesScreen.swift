@@ -32,15 +32,12 @@ struct ArchivesScreen: View {
                 }.foregroundColor(Color.black)
                     .padding()
                 
-                //            NavigationLink(destination: HomeScreen()){
-                //                Text("hi")
-                //            }
-                
                 List{
                     //                Section(content: {
                     ForEach(archive) { score in
                         NavigationLink {
-                            PastScoreScreen(score:score)
+                            FinalScore(score:score)
+                                .navigationBarBackButtonHidden(true)
                         } label: {
                             ArchivedRunRow(score: score)
                         }

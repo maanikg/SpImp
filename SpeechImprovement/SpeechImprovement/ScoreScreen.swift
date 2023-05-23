@@ -11,6 +11,9 @@ import Foundation
 import SwiftUI
 import AVFAudio
 
+var audioRecorder:AVAudioRecorder?
+var audioPlayer: AVAudioPlayer?
+
 struct FinalScore: View {
 //    var audioRecorder: AVAudioRecorder?
 //    var audioPlayer: AVAudioPlayer?
@@ -27,19 +30,18 @@ struct FinalScore: View {
     }
     
     func playAudio(){
-        let fileManager = FileManager.default
-        let documentPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
-        let soundFilePath = documentPath[0].appendingPathComponent("audioRecording\(archive.count+1).m4a")
-        if fileManager.fileExists(atPath:soundFilePath.path) {
-            let rec = audioRecorder
-            audioPlayer = try? AVAudioPlayer(contentsOf: rec!.url)
+        if FileManager.default.fileExists(atPath:score.fullPath) {
+            do {
+                try audioPlayer = AVAudioPlayer(contentsOf: score.path!)
+                audioPlayer?.stop()
                 audioPlayer?.play()
-            //audioRecorder = nil
+                    } catch {
+                        print(error)
+                    }
         } else {
             print("Audio file does not exist")
         }
         let audioSession = AVAudioSession.sharedInstance()
-//                    archive.append(Score(date: Date.now, storedFilename: soundFilePath.absoluteString, duration: ti))
         do {
             try audioSession.setCategory(.playback)
         } catch let error {

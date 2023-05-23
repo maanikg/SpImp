@@ -19,6 +19,9 @@ struct Score : Identifiable{
     var tips: [String] = [] //array of strings
     var storedFilename: String = ""
     var scoreName: String = ""
+    var fullPath:String = ""
+    var path:URL?
+//    var url : URL?
     var duration: TimeInterval = TimeInterval()
 //    var scoreColor: Color = Color(red:1.0-Double(scoreVal), green: scoreVal, blue:0.0)
     var scoreColor:Color = Color.black
@@ -26,15 +29,18 @@ struct Score : Identifiable{
 //    var id: String{storedFilename}
     var id: Int = 0
     
-    init(date: Date = Date.now, scoreVal: Double = 50, badFeatures: [String] = [], goodFeatures: [String] = [], tips:[String] = [], storedFilename: String = "temp", duration: TimeInterval = TimeInterval(0), scoreColor: Color = .black) {
+    init(date: Date = Date.now, scoreVal: Double = 50, badFeatures: [String] = [], goodFeatures: [String] = [], tips:[String] = [], fullPath:String = "", storedFilename: String = "temp", duration: TimeInterval = TimeInterval(0), scoreColor: Color = .black) {
         self.id = run
         self.date = date
         self.scoreVal = scoreVal
         self.badFeatures = badFeatures
         self.goodFeatures = goodFeatures
         self.tips = tips
+        self.fullPath = fullPath
+        self.path = URL(string: "file://\(self.fullPath)")
         self.storedFilename = storedFilename
         self.duration = duration
+//        self.url = url
         self.scoreName = "Run \(run)"
         self.scoreColor = scoreVal > 75 ? .green : scoreVal > 50 ? .yellow : .red
         print("score: \(self.scoreVal), id: \(self.id)")

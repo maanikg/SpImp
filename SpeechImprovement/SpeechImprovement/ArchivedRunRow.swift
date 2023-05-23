@@ -22,7 +22,7 @@ struct ArchivedRunRow: View {
                     .font(.caption)
                     .foregroundStyle(.secondary)
 //                Text((!score.tips.isEmpty ? score.tips[0] : "") + "...")
-                Text("\(score.id)")
+                Text("\(score.storedFilename)")
                     .font(.caption2)
                     .foregroundStyle(.secondary)
 //                Text(score.storedFilename)
