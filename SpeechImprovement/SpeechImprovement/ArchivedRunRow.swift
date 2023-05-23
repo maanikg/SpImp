@@ -21,7 +21,7 @@ struct ArchivedRunRow: View {
                 Text(score.date.formatted(date:.abbreviated, time:.shortened))
                     .font(.caption)
                     .foregroundStyle(.secondary)
-//                Text((score.tips.count > 0 ? score.tips[0] : "") + "...")
+//                Text((!score.tips.isEmpty ? score.tips[0] : "") + "...")
                 Text("\(score.id)")
                     .font(.caption2)
                     .foregroundStyle(.secondary)

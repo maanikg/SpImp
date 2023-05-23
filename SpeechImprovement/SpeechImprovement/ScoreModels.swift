@@ -19,29 +19,33 @@ struct Score : Identifiable{
     var tips: [String] = [] //array of strings
     var storedFilename: String = ""
     var scoreName: String = ""
+    var duration: TimeInterval = TimeInterval()
 //    var scoreColor: Color = Color(red:1.0-Double(scoreVal), green: scoreVal, blue:0.0)
     var scoreColor:Color = Color.black
 //    var id: String{scoreName+String(scoreVal)}
 //    var id: String{storedFilename}
     var id: Int = 0
     
-    init(date: Date = Date.now, scoreVal: Double = 50, badFeatures: [String] = [], goodFeatures: [String] = [], tips:[String] = [], storedFilename: String = "temp", scoreColor: Color = .black) {
+    init(date: Date = Date.now, scoreVal: Double = 50, badFeatures: [String] = [], goodFeatures: [String] = [], tips:[String] = [], storedFilename: String = "temp", duration: TimeInterval = TimeInterval(0), scoreColor: Color = .black) {
         self.id = run
         self.date = date
         self.scoreVal = scoreVal
         self.badFeatures = badFeatures
         self.goodFeatures = goodFeatures
+        self.tips = tips
         self.storedFilename = storedFilename
+        self.duration = duration
         self.scoreName = "Run \(run)"
         self.scoreColor = scoreVal > 75 ? .green : scoreVal > 50 ? .yellow : .red
-        
+        print("score: \(self.scoreVal), id: \(self.id)")
         run = run+1
     }
     
     static var example = Score(
-        date:Date(timeIntervalSinceNow: 60*60*24*365*1.5), scoreVal:94.6, badFeatures: ["volume", "pacing"],
-        goodFeatures: ["confidence", "expression"],
-        tips: ["practice more"], storedFilename: "temp")
+        date:Date(timeIntervalSinceNow: 60*60*24*365*1.5), scoreVal:92.6, badFeatures: ["Talked too fast", "Should use better flow"],
+        goodFeatures: ["Great tone", "No stuttering"],
+        tips: ["More effective spacing", "More convincing word choice"],
+        storedFilename: "temp")
 }
 
 var archive: [Score] = [

@@ -32,7 +32,7 @@ class AudioRecorder{
                 try audioSession.setCategory(.playAndRecord, mode: .default, options: [.mixWithOthers, .allowBluetooth, .allowAirPlay])
                 try audioSession.setActive(true)
                 let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-                let soundFilePath = documentPath[0].appendingPathComponent("audioRecording.m4a")
+                let soundFilePath = documentPath[0].appendingPathComponent("audioRecording\(archive.count+1).m4a")
                 let settings: [String: Any] = [ AVFormatIDKey: kAudioFormatAppleLossless,
                     AVEncoderAudioQualityKey: AVAudioQuality.max.rawValue,
                     AVEncoderBitRateKey: 32000,
@@ -61,12 +61,12 @@ class AudioRecorder{
         //self.startRecording(value: false)
     }
     
-    func stopRecording() {
+    func stopRecording(ti: TimeInterval) {
         audioRecorder?.stop()
         
         let fileManager = FileManager.default
         let documentPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
-        let soundFilePath = documentPath[0].appendingPathComponent("audioRecording.m4a")
+        let soundFilePath = documentPath[0].appendingPathComponent("audioRecording\(archive.count+1).m4a")
         if fileManager.fileExists(atPath:soundFilePath.path) {
             let rec = audioRecorder
             audioPlayer = try? AVAudioPlayer(contentsOf: rec!.url)
@@ -76,7 +76,7 @@ class AudioRecorder{
             print("Audio file does not exist")
         }
         let audioSession = AVAudioSession.sharedInstance()
-        archive.append(Score(date: Date.now, storedFilename: soundFilePath.absoluteString))
+        archive.append(Score(date: Date.now, storedFilename: soundFilePath.absoluteString, duration: ti))
         do {
             try audioSession.setCategory(.playback)
         } catch let error {
@@ -131,7 +131,7 @@ struct Record: View {
     @State var isPresented = false
     @State var shouldNavigate = false
     @State var display: Bool = false
-    @State var minute = 0
+    @State var minute:Int = 0
     @State var timerDisplay: Timer?
     @State var records = AudioRecorder()
     @State var track = false
@@ -283,17 +283,18 @@ struct Record: View {
     }
     
     func updateElapsedTime() {
-        if(Int(stopwatch.curTime) % 60 == 0 && Int(stopwatch.curTime) != 0) {
+        if(Int(round(stopwatch.curTime)) % 60 == 0 && round(stopwatch.curTime) != 0) {
             minute += 1
         }
-        timeLabel = String(format: "%02d:%02d", Int(minute), Int(stopwatch.curTime)%60)
+        timeLabel = String(format: "%02d:%02d", minute, Int(round(stopwatch.curTime))%60)
     }
     
     var body: some View {
         NavigationView{
             ZStack{
                 VStack{
-                    Text(!recording ? "Press to start recording" : "Press to finish recording")
+//                    Text(!recording ? "Press to start recording" : "Press to finish recording")
+                    Text(recording ? "Press to stop recording" : stopwatch.curTime == 0 ? "Press to start recording" : "Press to resume recording")
                         .font(.title)
                         .bold()
                     Image(hasMicrophoneAccessDenied ? "notPermittedToRecord" : !recording ? "notRecording" : "recording")
@@ -320,25 +321,27 @@ struct Record: View {
                                     .font(.title)
                                     .bold()
                                     .padding()
-                            }
-                            NavigationLink(destination: FinalScore().navigationBarBackButtonHidden(true))
+                            }.buttonStyle(.borderedProminent)
+                            NavigationLink(destination: FinalScore(score:archive.first!).navigationBarBackButtonHidden(true))
                             {
                                 Text("Done")
                                     .font(.title)
                                     .bold()
                                     .padding()
                             }
+                            .buttonStyle(.borderedProminent)
                             .disabled(!display)
                             .simultaneousGesture(TapGesture().onEnded {
-                                records.stopRecording()
+                                records.stopRecording(ti: stopwatch.curTime)
                             })
                         }
                         NavigationLink(destination: ArchivesScreen().navigationBarBackButtonHidden(true)) {
-                            Image(systemName: "list.bullet") 
+                            Image(systemName: "list.bullet")
                             Text("Past Runs")
-                        }
+                        }.disabled(archive.isEmpty)
                         .tint(Color.black.opacity(0.25))
                         .buttonStyle(.borderedProminent)
+                        .opacity(archive.isEmpty ? 0 : 1)
                     }
                 }
                 .blur(radius: !hasMicrophoneAccessDenied ? 0.0 : 10.0)

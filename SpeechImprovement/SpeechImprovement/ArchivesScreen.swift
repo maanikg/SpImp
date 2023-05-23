@@ -58,7 +58,7 @@ struct ArchivesScreen: View {
 //                        }
                     }
 //                    .background(Color.red)
-                    .listRowBackground(LinearGradient(colors: [Color.blue, Color.orange], startPoint: .leading, endPoint: .trailing).ignoresSafeArea())
+                    .listRowBackground(LinearGradient(colors: [Color.blue, Color.purple], startPoint: .leading, endPoint: .trailing).ignoresSafeArea())
                     .listRowSeparator(.visible)
                     
                     //                    .listRowBackground(Color.blue)
