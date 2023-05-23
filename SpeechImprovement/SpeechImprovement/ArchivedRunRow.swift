@@ -21,15 +21,19 @@ struct ArchivedRunRow: View {
                 Text(score.date.formatted(date:.abbreviated, time:.shortened))
                     .font(.caption)
                     .foregroundStyle(.secondary)
-                Text(score.tips[0] + "...")
+//                Text((!score.tips.isEmpty ? score.tips[0] : "") + "...")
+                Text("\(score.storedFilename)")
                     .font(.caption2)
                     .foregroundStyle(.secondary)
+//                Text(score.storedFilename)
+//                    .font(.caption2)
+//                    .foregroundStyle(.secondary)
             }
             Spacer()
             Text(String(score.scoreVal))
                 .font(.title3)
         }
-            .padding()
+//            .padding()
     }
 }
 

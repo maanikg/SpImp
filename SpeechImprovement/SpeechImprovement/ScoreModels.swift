@@ -8,39 +8,67 @@
 import Foundation
 import SwiftUI
 
+var run = 1
 //struct Score:Identifiable, Hashable{
+extension TimeInterval{
+    var hours: Int {return Int(self.rounded())/3600}
+    var minutes: Int{return (Int(self.rounded())-hours*3600)/60}
+    var seconds: Int{return Int(self.rounded())%60}
+}
+
 struct Score : Identifiable{
-    var date = Date() //date, time of recording
+//    var run:Int = 1
+    var date: Date //date, time of recording
     var scoreVal: Double = 0
-    var badFeatures, goodFeatures, tips: [String] //array of strings
+    var badFeatures:[String] = []
+    var goodFeatures:[String] = []
+    var tips: [String] = [] //array of strings
     var storedFilename: String = ""
     var scoreName: String = ""
+    var fullPath:String = ""
+    var path:URL?
+//    var url : URL?
+    var duration: TimeInterval = TimeInterval()
 //    var scoreColor: Color = Color(red:1.0-Double(scoreVal), green: scoreVal, blue:0.0)
     var scoreColor:Color = Color.black
-    var id: String{scoreName+String(scoreVal)}
+    var id: Int = 0
+    
+    init(date: Date = Date.now, scoreVal: Double = 50, badFeatures: [String] = [], goodFeatures: [String] = [], tips:[String] = [], fullPath:String = "", storedFilename: String = "temp", duration: TimeInterval = TimeInterval(0), scoreColor: Color = .black) {
+        self.id = run
+        self.date = date
+        self.scoreVal = scoreVal
+        self.badFeatures = badFeatures
+        self.goodFeatures = goodFeatures
+        self.tips = tips
+        self.fullPath = fullPath
+        self.path = URL(string: "file://\(self.fullPath)")
+        self.storedFilename = storedFilename
+        self.duration = duration
+//        self.url = url
+        self.scoreName = "Run \(run)"
+        self.scoreColor = scoreVal > 75 ? .green : scoreVal > 50 ? .yellow : .red
+        print("score: \(self.scoreVal), id: \(self.id)")
+        run = run+1
+    }
     
     static var example = Score(
-        date:Date(timeIntervalSinceNow: 60*60*24*365*1.5), scoreVal:94.6, badFeatures: ["volume", "pacing"],
-        goodFeatures: ["confidence", "expression"],
-        tips: ["practice more"],
-        scoreName:"Run 1")
+        date:Date(timeIntervalSinceNow: 60*60*24*365*1.5), scoreVal:92.6, badFeatures: ["Talked too fast", "Should use better flow"],
+        goodFeatures: ["Great tone", "No stuttering"],
+        tips: ["More effective spacing", "More convincing word choice"],
+        storedFilename: "temp")
 }
 
 var archive: [Score] = [
     Score(date:Date(timeIntervalSinceNow: 60*60*24*365*1.5), scoreVal:94.6, badFeatures: ["volume", "pacing"],
           goodFeatures: ["confidence", "expression"],
-          tips: ["practice more"],
-          scoreName:"Run 1"),
+          tips: ["practice more"]),
     Score(date:Date(timeIntervalSinceNow: 60*60*24*365*1.5), scoreVal:84.6, badFeatures: ["volume", "pacing"],
           goodFeatures: ["confidence", "expression"],
-          tips: ["practice less"],
-          scoreName:"Run 2"),
+          tips: ["practice less"]),
     Score(date:Date(timeIntervalSinceNow: 60*60*24*365*1.5), scoreVal:64.5, badFeatures: ["volume", "pacing"],
           goodFeatures: ["confidence", "expression"],
-          tips: ["no practice"],
-          scoreName:"Run 3"),
+          tips: ["no practice"]),
     Score(date:Date(timeIntervalSinceNow: 60*60*24*365*1.5), scoreVal:95.0, badFeatures: ["volume", "pacing"],
           goodFeatures: ["confidence", "expression"],
-          tips: ["practice now"],
-          scoreName:"Run 4")
+          tips: ["practice now"])
 ]

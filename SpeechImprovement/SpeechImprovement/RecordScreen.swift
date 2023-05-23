@@ -7,15 +7,18 @@
 
 import SwiftUI
 import Foundation
-//import UIKit
+import UIKit
 import AVKit
 import Speech
 
 import AVFoundation
 
+//var mostRecentScore:Score = Score()
+
 class AudioRecorder{
     
     private var audioRecorder: AVAudioRecorder?
+    private var audioPlayer: AVAudioPlayer?
     
     func startRecording(value: Bool) {
         if(value)
@@ -28,10 +31,17 @@ class AudioRecorder{
             do {
                 try audioSession.setCategory(.playAndRecord, mode: .default, options: [.mixWithOthers, .allowBluetooth, .allowAirPlay])
                 try audioSession.setActive(true)
-                let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-                let soundFilePath = documentPath.appendingPathComponent("audioRecording.m4a")
-                let settings = [AVFormatIDKey: Int(kAudioFormatMPEG4AAC), AVSampleRateKey: 12000, AVNumberOfChannelsKey: 1, AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
+                let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+                let soundFilePath = documentPath[0].appendingPathComponent("audioRecording\(archive.count+1).m4a")
+                let settings: [String: Any] = [ AVFormatIDKey: kAudioFormatAppleLossless,
+                    AVEncoderAudioQualityKey: AVAudioQuality.max.rawValue,
+                    AVEncoderBitRateKey: 32000,
+                    AVNumberOfChannelsKey: 2,
+                    AVSampleRateKey: 44100.0
+                ]
+                
                 audioRecorder = try AVAudioRecorder(url: soundFilePath, settings: settings)
+                audioRecorder?.isMeteringEnabled = true
                 audioRecorder?.prepareToRecord()
                 audioRecorder?.record()
             } catch let error {
@@ -48,17 +58,19 @@ class AudioRecorder{
         audioRecorder?.stop()
         audioRecorder?.deleteRecording()
         audioRecorder = nil
-        self.startRecording(value: false)
+        //self.startRecording(value: false)
     }
     
-    func stopRecording() {
+    func stopRecording(ti: TimeInterval) {
         audioRecorder?.stop()
-        audioRecorder = nil
-        let audioSession = AVAudioSession.sharedInstance()
-        do {
-            try audioSession.setActive(false)
-        } catch let error {
-            print("Error while stopping audio recording: \(error.localizedDescription)")
+        
+        let fileManager = FileManager.default
+        let documentPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+        let soundFilePath = documentPath[0].appendingPathComponent("audioRecording\(archive.count+1).m4a")
+        if fileManager.fileExists(atPath:soundFilePath.path) {
+            archive.append(Score(date: Date.now, fullPath: soundFilePath.path, storedFilename: "audioRecording\(archive.count+1).m4a", duration: ti))
+        } else {
+            print("Audio file does not exist")
         }
     }
 }
@@ -103,16 +115,17 @@ struct Record: View {
     @State private var timeLabel: String = "00:00"
     @State var stopwatch = StopWatch()
     @State var session: AVAudioSession!
-    @State var recorder: AVAudioRecorder!
+    @State var recorder = AVAudioRecorder()
     @State var alert = false
     @State var audios: [URL] = []
     @State var isPresented = false
     @State var shouldNavigate = false
     @State var display: Bool = false
-    @State var minute = 0
+    @State var minute:Int = 0
     @State var timerDisplay: Timer?
     @State var records = AudioRecorder()
     @State var track = false
+    @State var mostRecentScore:Score? = archive.last
     @State var hasMicrophoneAccess = AVCaptureDevice.authorizationStatus(for: .audio).rawValue == AVAuthorizationStatus.authorized.rawValue
     @State var hasMicrophoneAccessDenied = AVCaptureDevice.authorizationStatus(for: .audio).rawValue == AVAuthorizationStatus.denied.rawValue ||  AVCaptureDevice.authorizationStatus(for: .audio).rawValue == AVAuthorizationStatus.restricted.rawValue
     
@@ -124,6 +137,8 @@ struct Record: View {
         /// The app doesn't have permission to access microphone input.
         case noMicrophoneAccess
     }
+    
+    
     
     private func ensureMicrophoneAccess() throws {
         //        var hasMicrophoneAccess = false
@@ -175,17 +190,17 @@ struct Record: View {
     var tapGesture: some Gesture {
         TapGesture()
             .onEnded {
-                if (hasMicrophoneAccess){
+//                if (true){//hasMicrophoneAccess){
                     
                     withAnimation {
                         recording = !recording;
                         if(recording) {
-                            do {
-                                try ensureMicrophoneAccess()
-                                try startAudioSession()
-                            }catch{
-                                stopAudioSession()
-                            }
+//                            do {
+                                //try ensureMicrophoneAccess()
+                                //try startAudioSession()
+//                            }//catch{
+                               // stopAudioSession()
+                            //}
                             do {
                                 records.startRecording(value: track)
                                 stopwatch.start()
@@ -252,24 +267,25 @@ struct Record: View {
                              }*/
                             
                             
-                        }
+//                        }
                     }
                 }
             }
     }
     
     func updateElapsedTime() {
-        if(Int(stopwatch.curTime) % 60 == 0 && Int(stopwatch.curTime) != 0) {
+        if(Int(round(stopwatch.curTime)) % 60 == 0 && round(stopwatch.curTime) != 0) {
             minute += 1
         }
-        timeLabel = String(format: "%02d:%02d", Int(minute), Int(stopwatch.curTime)%60)
+        timeLabel = String(format: "%02d:%02d", minute, Int(round(stopwatch.curTime))%60)
     }
     
     var body: some View {
         NavigationView{
             ZStack{
                 VStack{
-                    Text(!recording ? "Press to start recording" : "Press to finish recording")
+//                    Text(!recording ? "Press to start recording" : "Press to finish recording")
+                    Text(recording ? "Press to stop recording" : stopwatch.curTime == 0 ? "Press to start recording" : "Press to resume recording")
                         .font(.title)
                         .bold()
                     Image(hasMicrophoneAccessDenied ? "notPermittedToRecord" : !recording ? "notRecording" : "recording")
@@ -279,31 +295,45 @@ struct Record: View {
                     Text(timeLabel)
                         .font(.title)
                         .bold()
-                    HStack{
-                        Button(action: {
-                            stopwatch.reset()
-                            records.restartRecording()
-                            timerDisplay?.invalidate()
-                            timeLabel = String(format: "%02d:%02d", 0, 0)
-                            recording = false
-                            minute = 0
-                            display = false
-                        }) {
-                            Text("Reset")
-                                .font(.title)
-                                .bold()
-                                .padding()
+                    VStack{
+                        
+                        HStack{
+                            Button(action: {
+                                stopwatch.reset()
+                                track = false
+                                records.restartRecording()
+                                timerDisplay?.invalidate()
+                                timeLabel = String(format: "%02d:%02d", 0, 0)
+                                recording = false
+                                minute = 0
+                                display = false
+                            }) {
+                                Text("Reset")
+                                    .font(.title)
+                                    .bold()
+                                    .padding()
+                            }.buttonStyle(.borderedProminent)
+                            NavigationLink(destination: FinalScore(score:mostRecentScore!).navigationBarBackButtonHidden(true))
+                            {
+                                Text("Done")
+                                    .font(.title)
+                                    .bold()
+                                    .padding()
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .disabled(!display)
+                            .simultaneousGesture(TapGesture().onEnded {
+                                records.stopRecording(ti: stopwatch.curTime)
+                                mostRecentScore = archive.last!
+                            })
                         }
-                        NavigationLink(destination: FinalScore()) {
-                            Text("Done")
-                                .font(.title)
-                                .bold()
-                                .padding()
-                        }
-                        .disabled(!display)
-                        .simultaneousGesture(TapGesture().onEnded {
-                            records.stopRecording()
-                        })
+                        NavigationLink(destination: ArchivesScreen().navigationBarBackButtonHidden(true)) {
+                            Image(systemName: "list.bullet")
+                            Text("Past Runs")
+                        }.disabled(archive.isEmpty)
+                        .tint(Color.black.opacity(0.25))
+                        .buttonStyle(.borderedProminent)
+                        .opacity(archive.isEmpty ? 0 : 1)
                     }
                 }
                 .blur(radius: !hasMicrophoneAccessDenied ? 0.0 : 10.0)
@@ -320,7 +350,7 @@ struct Record: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(LinearGradient(colors: [hasMicrophoneAccessDenied ? Color.black : Color.white, !recording ? Color.blue : Color.indigo], startPoint: .top, endPoint: .bottom))
-            let _ = print(hasMicrophoneAccessDenied.description)
+//            let _ = print(hasMicrophoneAccessDenied.description)
 
         }
         

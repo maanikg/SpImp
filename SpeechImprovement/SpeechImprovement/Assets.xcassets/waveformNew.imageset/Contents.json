@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "overlapping-waves-app-icon-sound-wave-with-flowing-fluid-effect-digital-soundwave-audio-waveform-audio-rhythm-ui-ux-user-interface-web-or-mobile-application-isolated-illustration-vector.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
