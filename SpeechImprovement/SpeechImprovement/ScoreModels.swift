@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import AVFAudio
 
 var run = 1
 //struct Score:Identifiable, Hashable{
@@ -32,6 +33,9 @@ struct Score : Identifiable{
 //    var scoreColor: Color = Color(red:1.0-Double(scoreVal), green: scoreVal, blue:0.0)
     var scoreColor:Color = Color.black
     var id: Int = 0
+    var resultsObserver = ResultsObserver()
+//    try audioFileANalyzer.add(classifySoundRequest, withObserver: resultsObserver)
+//    audioFileAnalyzer.analyze()
     
     init(date: Date = Date.now, scoreVal: Double = 50, badFeatures: [String] = [], goodFeatures: [String] = [], tips:[String] = [], fullPath:String = "", storedFilename: String = "temp", duration: TimeInterval = TimeInterval(0), scoreColor: Color = .black) {
         self.id = run
@@ -47,8 +51,12 @@ struct Score : Identifiable{
 //        self.url = url
         self.scoreName = "Run \(run)"
         self.scoreColor = scoreVal > 75 ? .green : scoreVal > 50 ? .yellow : .red
-        print("score: \(self.scoreVal), id: \(self.id)")
+        print("score: \(self.scoreVal), id: \(self.id), path: \(fullPath)")
+//        print(fullPath)
         run = run+1
+        if (!fullPath.isEmpty){
+            analyze()
+        }
     }
     
     static var example = Score(
@@ -56,6 +64,22 @@ struct Score : Identifiable{
         goodFeatures: ["Great tone", "No stuttering"],
         tips: ["More effective spacing", "More convincing word choice"],
         storedFilename: "temp")
+    
+    func analyze() {
+        do{
+            let audioFileAnalyzer = createAnalyzer(audioFileURL: path!)
+            try audioFileAnalyzer!.add(classifySoundRequest, withObserver: resultsObserver)
+            audioFileAnalyzer?.analyze()
+//            let audioFormat = AVAudioFormat(standardFormatWithSampleRate: 44100.0, channels: 1)!
+//            let bufferSize = AVAudioFrameCount(audioFormat.sampleRate * 5.0)
+//            let audioFormat = audioFileAnalyzer!.defaultFormat
+//            let frameCount = UInt32(audioFormat.sampleRate * audioTimeInterval)
+//            let timeRange = CMTimeRange(start: CMTime.zero, duration: CMTime(value: CMTimeValue(frameCount), timescale: audioFormat.sampleRate))
+//            audioFileAnalyzer?.analyze(timeRange: timeRange)
+        }catch{
+            print("Error when analyzing: \(error)")
+        }
+    }
 }
 
 var archive: [Score] = [

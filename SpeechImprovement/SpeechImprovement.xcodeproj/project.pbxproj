@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		4809E1DF2A0831CB003F954C /* RecordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4809E1DE2A0831CB003F954C /* RecordScreen.swift */; };
+		480C726B2A1E739E008057A2 /* SpeechImprovement_ML 12.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 480C726A2A1E739E008057A2 /* SpeechImprovement_ML 12.mlmodel */; };
+		480C726D2A1E748C008057A2 /* SpeechImprovement_ML 13.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 480C726C2A1E748C008057A2 /* SpeechImprovement_ML 13.mlmodel */; };
+		480C726F2A1E751B008057A2 /* SpeechImprovement_ML 14.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 480C726E2A1E751B008057A2 /* SpeechImprovement_ML 14.mlmodel */; };
 		482A77792A0BFBBB00E3DF89 /* ScoreModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A77722A0BFBBB00E3DF89 /* ScoreModels.swift */; };
 		482A777A2A0BFBBB00E3DF89 /* ScoreScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A77732A0BFBBB00E3DF89 /* ScoreScreen.swift */; };
-		482A777B2A0BFBBB00E3DF89 /* PastScoreScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A77742A0BFBBB00E3DF89 /* PastScoreScreen.swift */; };
 		482A777C2A0BFBBB00E3DF89 /* ArchivedRunRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A77752A0BFBBB00E3DF89 /* ArchivedRunRow.swift */; };
 		482A777D2A0BFBBB00E3DF89 /* IntermediateScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A77762A0BFBBB00E3DF89 /* IntermediateScreen.swift */; };
 		482A777E2A0BFBBB00E3DF89 /* ScoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A77772A0BFBBB00E3DF89 /* ScoreData.swift */; };
@@ -22,6 +24,8 @@
 		4838DD062A0318FA0045380C /* SpeechImprovementUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838DD052A0318FA0045380C /* SpeechImprovementUITestsLaunchTests.swift */; };
 		4838DD4B2A0327BB0045380C /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838DD4A2A0327BB0045380C /* HomeScreen.swift */; };
 		48F833902A034D3800307186 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F8338F2A034D3700307186 /* CircleImage.swift */; };
+		48FE7FF02A1E65860041EA3D /* ToneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FE7FEF2A1E65860041EA3D /* ToneModel.swift */; };
+		48FE7FF82A1E67820041EA3D /* toneModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 48FE7FF62A1E67420041EA3D /* toneModel.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,9 +47,11 @@
 
 /* Begin PBXFileReference section */
 		4809E1DE2A0831CB003F954C /* RecordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordScreen.swift; sourceTree = "<group>"; };
+		480C726A2A1E739E008057A2 /* SpeechImprovement_ML 12.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "SpeechImprovement_ML 12.mlmodel"; sourceTree = "<group>"; };
+		480C726C2A1E748C008057A2 /* SpeechImprovement_ML 13.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "SpeechImprovement_ML 13.mlmodel"; sourceTree = "<group>"; };
+		480C726E2A1E751B008057A2 /* SpeechImprovement_ML 14.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "SpeechImprovement_ML 14.mlmodel"; sourceTree = "<group>"; };
 		482A77722A0BFBBB00E3DF89 /* ScoreModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreModels.swift; sourceTree = "<group>"; };
 		482A77732A0BFBBB00E3DF89 /* ScoreScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreScreen.swift; sourceTree = "<group>"; };
-		482A77742A0BFBBB00E3DF89 /* PastScoreScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastScoreScreen.swift; sourceTree = "<group>"; };
 		482A77752A0BFBBB00E3DF89 /* ArchivedRunRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchivedRunRow.swift; sourceTree = "<group>"; };
 		482A77762A0BFBBB00E3DF89 /* IntermediateScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntermediateScreen.swift; sourceTree = "<group>"; };
 		482A77772A0BFBBB00E3DF89 /* ScoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreData.swift; sourceTree = "<group>"; };
@@ -61,6 +67,8 @@
 		4838DD4A2A0327BB0045380C /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		48E6946A2A12B50000150E3C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48F8338F2A034D3700307186 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		48FE7FEF2A1E65860041EA3D /* ToneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToneModel.swift; sourceTree = "<group>"; };
+		48FE7FF62A1E67420041EA3D /* toneModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = toneModel.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +119,7 @@
 		4838DCE72A0318F70045380C /* SpeechImprovement */ = {
 			isa = PBXGroup;
 			children = (
+				48FE7FF72A1E67740041EA3D /* Models */,
 				48E6946A2A12B50000150E3C /* Info.plist */,
 				4838DCE82A0318F70045380C /* SpeechImprovementApp.swift */,
 				4838DD4A2A0327BB0045380C /* HomeScreen.swift */,
@@ -118,9 +127,9 @@
 				482A77782A0BFBBB00E3DF89 /* ArchivesScreen.swift */,
 				4809E1DE2A0831CB003F954C /* RecordScreen.swift */,
 				482A77762A0BFBBB00E3DF89 /* IntermediateScreen.swift */,
-				482A77742A0BFBBB00E3DF89 /* PastScoreScreen.swift */,
 				482A77772A0BFBBB00E3DF89 /* ScoreData.swift */,
 				482A77722A0BFBBB00E3DF89 /* ScoreModels.swift */,
+				48FE7FEF2A1E65860041EA3D /* ToneModel.swift */,
 				482A77732A0BFBBB00E3DF89 /* ScoreScreen.swift */,
 				4838DCEC2A0318FA0045380C /* Assets.xcassets */,
 				48F8338F2A034D3700307186 /* CircleImage.swift */,
@@ -143,6 +152,17 @@
 				4838DD052A0318FA0045380C /* SpeechImprovementUITestsLaunchTests.swift */,
 			);
 			path = SpeechImprovementUITests;
+			sourceTree = "<group>";
+		};
+		48FE7FF72A1E67740041EA3D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				480C726E2A1E751B008057A2 /* SpeechImprovement_ML 14.mlmodel */,
+				480C726C2A1E748C008057A2 /* SpeechImprovement_ML 13.mlmodel */,
+				480C726A2A1E739E008057A2 /* SpeechImprovement_ML 12.mlmodel */,
+				48FE7FF62A1E67420041EA3D /* toneModel.mlmodel */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,13 +294,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48FE7FF82A1E67820041EA3D /* toneModel.mlmodel in Sources */,
+				48FE7FF02A1E65860041EA3D /* ToneModel.swift in Sources */,
 				482A77792A0BFBBB00E3DF89 /* ScoreModels.swift in Sources */,
 				482A777D2A0BFBBB00E3DF89 /* IntermediateScreen.swift in Sources */,
-				482A777B2A0BFBBB00E3DF89 /* PastScoreScreen.swift in Sources */,
 				4809E1DF2A0831CB003F954C /* RecordScreen.swift in Sources */,
 				482A777C2A0BFBBB00E3DF89 /* ArchivedRunRow.swift in Sources */,
 				4838DCE92A0318F70045380C /* SpeechImprovementApp.swift in Sources */,
 				482A777A2A0BFBBB00E3DF89 /* ScoreScreen.swift in Sources */,
+				480C726B2A1E739E008057A2 /* SpeechImprovement_ML 12.mlmodel in Sources */,
+				480C726F2A1E751B008057A2 /* SpeechImprovement_ML 14.mlmodel in Sources */,
+				480C726D2A1E748C008057A2 /* SpeechImprovement_ML 13.mlmodel in Sources */,
 				482A777F2A0BFBBB00E3DF89 /* ArchivesScreen.swift in Sources */,
 				48F833902A034D3800307186 /* CircleImage.swift in Sources */,
 				482A777E2A0BFBBB00E3DF89 /* ScoreData.swift in Sources */,
