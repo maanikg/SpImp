@@ -22,7 +22,7 @@ let classifyToneSoundReq = try! SNClassifySoundRequest(mlModel: toneClassifier.m
 let resultsObserver = ResultsObserver()
 
 
-
+//TODO: COMMENTED OUT PRINTING FOR CLARITY
 /// An observer that receives results from a classify sound request.
 class ResultsObserver: NSObject, SNResultsObserving {
     /// Notifies the observer when a request generates a prediction.
@@ -39,14 +39,17 @@ class ResultsObserver: NSObject, SNResultsObserving {
         let timeInSeconds = result.timeRange.start.seconds
 
         // Convert the time to a human-readable string.
+        
         let formattedTime = String(format: "%.2f", timeInSeconds)
-        print("Analysis result for audio at time: \(formattedTime)")
+        //COMMENTED OUT
+//        print("Analysis result for audio at time: \(formattedTime)")
 
         for classif in classification{
             let percent = classif.confidence * 100.0
             let percentString = String(format: "%.2f%%", percent)
+            //COMMENTED OUT
             if (round(percent) != 0){
-                print("\(classif.identifier): \(percentString) confidence.")
+//                print("\(classif.identifier): \(percentString) confidence.")
             }
         }
         
@@ -65,7 +68,7 @@ class ResultsObserver: NSObject, SNResultsObserving {
 
     /// Notifies the observer when a request is complete.
     func requestDidComplete(_ request: SNRequest) {
-        print("The request completed successfully!")
+        print("The sound classifier request completed successfully!")
     }
 }
 

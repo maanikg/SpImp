@@ -62,36 +62,37 @@ class AudioRecorder{
         //self.startRecording(value: false)
     }
     
-    func stopRecording() {
-            audioRecorder?.stop()
+    func stopRecording(ti: TimeInterval) {
+        audioRecorder?.stop()
+        
+        let fileManager = FileManager.default
+        let documentPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+        let soundFilePath = documentPath[0].appendingPathComponent("audioRecording\(archive.count+1).m4a")
+        if fileManager.fileExists(atPath:soundFilePath.path) {
             
-            let fileManager = FileManager.default
-            let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-            let soundFilePath = documentPath[0].appendingPathComponent("audioRecording.m4a")
-            if fileManager.fileExists(atPath: soundFilePath.path) {
-                print("Audio file exists")
-                let rec = audioRecorder
-                
-                // Convert recorded audio to speech
-                convertAudioToSpeech(audioURL: rec!.url)
-            } else {
-                print("Audio file does not exist")
-            }
-            
-            let audioSession = AVAudioSession.sharedInstance()
-            do {
-                try audioSession.setActive(false)
-            } catch let error {
-                print("Error while stopping audio recording: \(error.localizedDescription)")
-            }
+            let rec = audioRecorder
+            archive.append(Score(date: Date.now, fullPath: soundFilePath.path, storedFilename: "audioRecording\(archive.count+1).m4a", duration: ti))
+            // Convert recorded audio to speech
+            convertAudioToSpeech(audioURL: rec!.url)
+//            convertAudioToSpeech(audioURL: audioRecorder!.url)
+        } else {
+            print("Audio file does not exist")
         }
         
-        private func convertAudioToSpeech(audioURL: URL) {
-            let recognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
-            let request = SFSpeechURLRecognitionRequest(url: audioURL)
-            
-            recognizer?.recognitionTask(with: request) { result, error in
-                guard let result = result else {
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setActive(false)
+        } catch let error {
+            print("Error while stopping audio recording: \(error.localizedDescription)")
+        }
+    }
+    
+    private func convertAudioToSpeech(audioURL: URL) {
+        let recognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
+        let request = SFSpeechURLRecognitionRequest(url: audioURL)
+        
+        recognizer?.recognitionTask(with: request) { result, error in
+            guard let result = result else {
                     print("Speech recognition failed: \(error?.localizedDescription ?? "Unknown error")")
                     return
                 }
