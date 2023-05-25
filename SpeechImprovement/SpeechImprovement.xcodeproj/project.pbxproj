@@ -23,6 +23,7 @@
 		4838DD042A0318FA0045380C /* SpeechImprovementUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838DD032A0318FA0045380C /* SpeechImprovementUITests.swift */; };
 		4838DD062A0318FA0045380C /* SpeechImprovementUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838DD052A0318FA0045380C /* SpeechImprovementUITestsLaunchTests.swift */; };
 		4838DD4B2A0327BB0045380C /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838DD4A2A0327BB0045380C /* HomeScreen.swift */; };
+		48F5F9F92A1FF4CC008DC78D /* SpeechImprovement_ML 10.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 48F5F9F82A1FF4CC008DC78D /* SpeechImprovement_ML 10.mlmodel */; };
 		48F833902A034D3800307186 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F8338F2A034D3700307186 /* CircleImage.swift */; };
 		48FE7FF02A1E65860041EA3D /* ToneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FE7FEF2A1E65860041EA3D /* ToneModel.swift */; };
 		48FE7FF82A1E67820041EA3D /* toneModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 48FE7FF62A1E67420041EA3D /* toneModel.mlmodel */; };
@@ -66,6 +67,7 @@
 		4838DD052A0318FA0045380C /* SpeechImprovementUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechImprovementUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4838DD4A2A0327BB0045380C /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		48E6946A2A12B50000150E3C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48F5F9F82A1FF4CC008DC78D /* SpeechImprovement_ML 10.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "SpeechImprovement_ML 10.mlmodel"; sourceTree = "<group>"; };
 		48F8338F2A034D3700307186 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		48FE7FEF2A1E65860041EA3D /* ToneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToneModel.swift; sourceTree = "<group>"; };
 		48FE7FF62A1E67420041EA3D /* toneModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = toneModel.mlmodel; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 		48FE7FF72A1E67740041EA3D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				48F5F9F82A1FF4CC008DC78D /* SpeechImprovement_ML 10.mlmodel */,
 				480C726E2A1E751B008057A2 /* SpeechImprovement_ML 14.mlmodel */,
 				480C726C2A1E748C008057A2 /* SpeechImprovement_ML 13.mlmodel */,
 				480C726A2A1E739E008057A2 /* SpeechImprovement_ML 12.mlmodel */,
@@ -308,6 +311,7 @@
 				482A777F2A0BFBBB00E3DF89 /* ArchivesScreen.swift in Sources */,
 				48F833902A034D3800307186 /* CircleImage.swift in Sources */,
 				482A777E2A0BFBBB00E3DF89 /* ScoreData.swift in Sources */,
+				48F5F9F92A1FF4CC008DC78D /* SpeechImprovement_ML 10.mlmodel in Sources */,
 				4838DD4B2A0327BB0045380C /* HomeScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
