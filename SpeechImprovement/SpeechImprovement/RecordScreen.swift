@@ -14,7 +14,7 @@ import Speech
 
 import AVFoundation
 
-
+//var mostRecentScore:Score = Score()
 
 class AudioRecorder{
     
@@ -33,7 +33,7 @@ class AudioRecorder{
                 try audioSession.setCategory(.playAndRecord, mode: .default, options: [.mixWithOthers, .allowBluetooth, .allowAirPlay])
                 try audioSession.setActive(true)
                 let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-                let soundFilePath = documentPath[0].appendingPathComponent("audioRecording.m4a")
+                let soundFilePath = documentPath[0].appendingPathComponent("audioRecording\(archive.count+1).m4a")
                 let settings: [String: Any] = [ AVFormatIDKey: kAudioFormatAppleLossless,
                     AVEncoderAudioQualityKey: AVAudioQuality.max.rawValue,
                     AVEncoderBitRateKey: 32000,
@@ -154,10 +154,11 @@ struct Record: View {
     @State var isPresented = false
     @State var shouldNavigate = false
     @State var display: Bool = false
-    @State var minute = 0
+    @State var minute:Int = 0
     @State var timerDisplay: Timer?
     @State var records = AudioRecorder()
     @State var track = false
+    @State var mostRecentScore:Score? = archive.last
     @State var hasMicrophoneAccess = AVCaptureDevice.authorizationStatus(for: .audio).rawValue == AVAuthorizationStatus.authorized.rawValue
     @State var hasMicrophoneAccessDenied = AVCaptureDevice.authorizationStatus(for: .audio).rawValue == AVAuthorizationStatus.denied.rawValue ||  AVCaptureDevice.authorizationStatus(for: .audio).rawValue == AVAuthorizationStatus.restricted.rawValue
     
@@ -222,15 +223,15 @@ struct Record: View {
     var tapGesture: some Gesture {
         TapGesture()
             .onEnded {
-                if (true){//hasMicrophoneAccess){
+//                if (true){//hasMicrophoneAccess){
                     
                     withAnimation {
                         recording = !recording;
                         if(recording) {
-                            do {
+//                            do {
                                 //try ensureMicrophoneAccess()
                                 //try startAudioSession()
-                            }//catch{
+//                            }//catch{
                                // stopAudioSession()
                             //}
                             do {
@@ -255,24 +256,25 @@ struct Record: View {
                             
                             
                             
-                        }
+//                        }
                     }
                 }
             }
     }
     
     func updateElapsedTime() {
-        if(Int(stopwatch.curTime) % 60 == 0 && Int(stopwatch.curTime) != 0) {
+        if(Int(round(stopwatch.curTime)) % 60 == 0 && round(stopwatch.curTime) != 0) {
             minute += 1
         }
-        timeLabel = String(format: "%02d:%02d", Int(minute), Int(stopwatch.curTime)%60)
+        timeLabel = String(format: "%02d:%02d", minute, Int(round(stopwatch.curTime))%60)
     }
     
     var body: some View {
         NavigationView{
             ZStack{
                 VStack{
-                    Text(!recording ? "Press to start recording" : "Press to finish recording")
+//                    Text(!recording ? "Press to start recording" : "Press to finish recording")
+                    Text(recording ? "Press to stop recording" : stopwatch.curTime == 0 ? "Press to start recording" : "Press to resume recording")
                         .font(.title)
                         .bold()
                     Image(hasMicrophoneAccessDenied ? "notPermittedToRecord" : !recording ? "notRecording" : "recording")
@@ -282,32 +284,45 @@ struct Record: View {
                     Text(timeLabel)
                         .font(.title)
                         .bold()
-                    HStack{
-                        Button(action: {
-                            stopwatch.reset()
-                            track = false
-                            records.restartRecording()
-                            timerDisplay?.invalidate()
-                            timeLabel = String(format: "%02d:%02d", 0, 0)
-                            recording = false
-                            minute = 0
-                            display = false
-                        }) {
-                            Text("Reset")
-                                .font(.title)
-                                .bold()
-                                .padding()
+                    VStack{
+                        
+                        HStack{
+                            Button(action: {
+                                stopwatch.reset()
+                                track = false
+                                records.restartRecording()
+                                timerDisplay?.invalidate()
+                                timeLabel = String(format: "%02d:%02d", 0, 0)
+                                recording = false
+                                minute = 0
+                                display = false
+                            }) {
+                                Text("Reset")
+                                    .font(.title)
+                                    .bold()
+                                    .padding()
+                            }.buttonStyle(.borderedProminent)
+                            NavigationLink(destination: FinalScore(score:mostRecentScore!).navigationBarBackButtonHidden(true))
+                            {
+                                Text("Done")
+                                    .font(.title)
+                                    .bold()
+                                    .padding()
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .disabled(!display)
+                            .simultaneousGesture(TapGesture().onEnded {
+                                records.stopRecording(ti: stopwatch.curTime)
+                                mostRecentScore = archive.last!
+                            })
                         }
-                        NavigationLink(destination: FinalScore()) {
-                            Text("Done")
-                                .font(.title)
-                                .bold()
-                                .padding()
-                        }
-                        .disabled(!display)
-                        .simultaneousGesture(TapGesture().onEnded {
-                            records.stopRecording()
-                        })
+                        NavigationLink(destination: ArchivesScreen().navigationBarBackButtonHidden(true)) {
+                            Image(systemName: "list.bullet")
+                            Text("Past Runs")
+                        }.disabled(archive.isEmpty)
+                        .tint(Color.black.opacity(0.25))
+                        .buttonStyle(.borderedProminent)
+                        .opacity(archive.isEmpty ? 0 : 1)
                     }
                 }
                 .blur(radius: !hasMicrophoneAccessDenied ? 0.0 : 10.0)
@@ -324,7 +339,7 @@ struct Record: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(LinearGradient(colors: [hasMicrophoneAccessDenied ? Color.black : Color.white, !recording ? Color.blue : Color.indigo], startPoint: .top, endPoint: .bottom))
-            let _ = print(hasMicrophoneAccessDenied.description)
+//            let _ = print(hasMicrophoneAccessDenied.description)
 
         }
         
