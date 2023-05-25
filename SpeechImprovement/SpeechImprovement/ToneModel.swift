@@ -11,13 +11,17 @@ import CoreML
 import SoundAnalysis
 
 let defaultConfig = MLModelConfiguration()
-let soundClassifier = try! toneModel(configuration: defaultConfig)
-//let soundClassifier = try! SpeechImprovement_ML_12(configuration: defaultConfig)
-//let soundClassifier = try! SpeechImprovement_ML_13(configuration: defaultConfig)
-//let soundClassifier = try! SpeechImprovement_ML_14(configuration: defaultConfig)
-let classifySoundRequest = try! SNClassifySoundRequest(mlModel: soundClassifier.model)
-
+let toneClassifier = try! toneModel(configuration: defaultConfig)
+//let toneClassifier = try! SpeechImprovement_ML_12(configuration: defaultConfig)
+//let toneClassifier = try! SpeechImprovement_ML_13(configuration: defaultConfig)
+//let toneClassifier = try! SpeechImprovement_ML_14(configuration: defaultConfig)
+//let speedClassifier
+//let volumeClassifier
+//let clarityClassifier
+let classifyToneSoundReq = try! SNClassifySoundRequest(mlModel: toneClassifier.model)
 let resultsObserver = ResultsObserver()
+
+
 
 /// An observer that receives results from a classify sound request.
 class ResultsObserver: NSObject, SNResultsObserving {

@@ -68,7 +68,7 @@ struct Score : Identifiable{
     func analyze() {
         do{
             let audioFileAnalyzer = createAnalyzer(audioFileURL: path!)
-            try audioFileAnalyzer!.add(classifySoundRequest, withObserver: resultsObserver)
+            try audioFileAnalyzer!.add(classifyToneSoundReq, withObserver: resultsObserver)
             audioFileAnalyzer?.analyze()
 //            let audioFormat = AVAudioFormat(standardFormatWithSampleRate: 44100.0, channels: 1)!
 //            let bufferSize = AVAudioFrameCount(audioFormat.sampleRate * 5.0)
