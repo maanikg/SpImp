@@ -3,6 +3,7 @@
 ////  Speechs
 ////
 ////  Created by Tyler Yan on 2023-05-07.
+///Modified By Ahmet Utku H. 2023-05-24
 ////
 
 import SwiftUI
@@ -62,27 +63,49 @@ class AudioRecorder{
     }
     
     func stopRecording() {
-        audioRecorder?.stop()
+            audioRecorder?.stop()
+            
+            let fileManager = FileManager.default
+            let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+            let soundFilePath = documentPath[0].appendingPathComponent("audioRecording.m4a")
+            if fileManager.fileExists(atPath: soundFilePath.path) {
+                print("Audio file exists")
+                let rec = audioRecorder
+                
+                // Convert recorded audio to speech
+                convertAudioToSpeech(audioURL: rec!.url)
+            } else {
+                print("Audio file does not exist")
+            }
+            
+            let audioSession = AVAudioSession.sharedInstance()
+            do {
+                try audioSession.setActive(false)
+            } catch let error {
+                print("Error while stopping audio recording: \(error.localizedDescription)")
+            }
+        }
         
-        let fileManager = FileManager.default
-        let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let soundFilePath = documentPath[0].appendingPathComponent("audioRecording.m4a")
-        if fileManager.fileExists(atPath:soundFilePath.path) {
-            print("Audio file exists")
-            let rec = audioRecorder
-            audioPlayer = try? AVAudioPlayer(contentsOf: rec!.url)
-                audioPlayer?.play()
-            //audioRecorder = nil
-        } else {
-            print("Audio file does not exist")
+        private func convertAudioToSpeech(audioURL: URL) {
+            let recognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
+            let request = SFSpeechURLRecognitionRequest(url: audioURL)
+            
+            recognizer?.recognitionTask(with: request) { result, error in
+                guard let result = result else {
+                    print("Speech recognition failed: \(error?.localizedDescription ?? "Unknown error")")
+                    return
+                }
+                
+                if result.isFinal {
+                    let transcription = result.bestTranscription.formattedString
+                    print("Transcription: \(transcription)")
+                    
+                    // Do something with the transcription
+                    // For example, display it in a text view
+                    // textView.text = transcription
+                }
+            }
         }
-        let audioSession = AVAudioSession.sharedInstance()
-        do {
-            try audioSession.setActive(false)
-        } catch let error {
-            print("Error while stopping audio recording: \(error.localizedDescription)")
-        }
-    }
 }
 
 class StopWatch {
@@ -215,24 +238,7 @@ struct Record: View {
                                 stopwatch.start()
                                 display = false
                                 track = true
-                                /*  let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-                                 
-                                 // same file name...
-                                 // so were updating based on audio count...
-                                 let filName = url.appendingPathComponent("myRcd\(self.audios.count + 1).m4a")
-                                 
-                                 let settings = [
-                                 
-                                 AVFormatIDKey : Int(kAudioFormatMPEG4AAC),
-                                 AVSampleRateKey : 12000,
-                                 AVNumberOfChannelsKey : 1,
-                                 AVEncoderAudioQualityKey : AVAudioQuality.high.rawValue
-                                 
-                                 ]
-                                 
-                                 self.recorder = try AVAudioRecorder(url: filName, settings: settings)
-                                 self.recorder.record()
-                                 */
+                               
                                 timerDisplay = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {  _ in
                                     updateElapsedTime()
                                 }
@@ -246,34 +252,7 @@ struct Record: View {
                             //self.recorder.pause()
                             
                             
-                            // Create pop up window to go to score or to keep recording
-                            /*let alert = UIAlertController(title: "Recording", message: "Would you like to continue recording?", preferredStyle: .alert)
-                             let doneAction = UIAlertAction(title: "Done", style: .default) { (_) in
-                             // Do something when OK is tapped
-                             // This can be left blank if you just want the window to dismiss
-                             
-                             self.recorder.stop()
-                             self.getAudios()
-                             NavigationLink(destination: FinalScore(), isActive: $temp) {
-                             EmptyView()
-                             }
-                             }
-                             
-                             let continueAction = UIAlertAction(title: "Continue Recording", style: .default) { (_) in
-                             
-                             self.recorder.record()
-                             stopwatch.start()
-                             recording = true
-                             }
-                             
-                             alert.addAction(doneAction)
-                             alert.addAction(continueAction)
-                             // Present the alert controller
-                             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                             let sceneDelegate = windowScene.delegate as? SceneDelegate,
-                             let viewController = sceneDelegate.window?.rootViewController {
-                             viewController.present(alert, animated: true, completion: nil)
-                             }*/
+                            
                             
                             
                         }
@@ -349,53 +328,9 @@ struct Record: View {
 
         }
         
-        /*.onAppear {
-         do {
-         self.session = AVAudioSession.sharedInstance()
-         try self.session.setCategory(.playAndRecord)
-         
-         self.session.requestRecordPermission { (status) in
-         if !status {
-         self.alert.toggle()
-         }
-         else {
-         self.getAudios()
-         }
-         }
-         }
-         catch {
-         print(error.localizedDescription)
-         }
-         }*/
-        
-        
     }
     
-    /*
-     func getAudios() {
-     do {
-     let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-     
-     // fetch all data from document directory...
-     
-     let result = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: .producesRelativePathURLs)
-     
-     // updated means remove all old data..
-     
-     self.audios.removeAll()
-     
-     for i in result{
-     
-     self.audios.append(i)
-     }
-     }
-     catch{
-     print(error.localizedDescription)
-     }
-     }
-     }
-     
-     */
+    
     
     struct Record_Previews: PreviewProvider {
         static var previews: some View {
