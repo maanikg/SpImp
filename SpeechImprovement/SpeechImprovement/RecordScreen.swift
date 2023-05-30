@@ -143,7 +143,7 @@ class StopWatch {
     }
 }
 
-struct Record: View {
+struct RecordScreen: View {
     
     @State private var recording: Bool = false
     @State private var timeLabel: String = "00:00"
@@ -313,8 +313,10 @@ struct Record: View {
                             .buttonStyle(.borderedProminent)
                             .disabled(!display)
                             .simultaneousGesture(TapGesture().onEnded {
-                                records.stopRecording(ti: stopwatch.curTime)
-                                mostRecentScore = archive.last!
+                                if (display){
+                                    records.stopRecording(ti: stopwatch.curTime)
+                                    mostRecentScore = archive.last!
+                                }
                             })
                         }
                         NavigationLink(destination: ArchivesScreen().navigationBarBackButtonHidden(true)) {
@@ -350,7 +352,7 @@ struct Record: View {
     
     struct Record_Previews: PreviewProvider {
         static var previews: some View {
-            Record()
+            RecordScreen()
         }
     }
 }

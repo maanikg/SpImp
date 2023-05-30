@@ -19,32 +19,21 @@
 		482A777F2A0BFBBB00E3DF89 /* ArchivesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A77782A0BFBBB00E3DF89 /* ArchivesScreen.swift */; };
 		4838DCE92A0318F70045380C /* SpeechImprovementApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838DCE82A0318F70045380C /* SpeechImprovementApp.swift */; };
 		4838DCED2A0318FA0045380C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4838DCEC2A0318FA0045380C /* Assets.xcassets */; };
-		4838DCFA2A0318FA0045380C /* SpeechImprovementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838DCF92A0318FA0045380C /* SpeechImprovementTests.swift */; };
-		4838DD042A0318FA0045380C /* SpeechImprovementUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838DD032A0318FA0045380C /* SpeechImprovementUITests.swift */; };
-		4838DD062A0318FA0045380C /* SpeechImprovementUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838DD052A0318FA0045380C /* SpeechImprovementUITestsLaunchTests.swift */; };
 		4838DD4B2A0327BB0045380C /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4838DD4A2A0327BB0045380C /* HomeScreen.swift */; };
+		48659CB52A2526F000F19B79 /* Color+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48659CB42A2526F000F19B79 /* Color+Codable.swift */; };
+		48659CB72A25508A00F19B79 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48659CB62A25508A00F19B79 /* GoogleService-Info.plist */; };
+		48659CBA2A25537300F19B79 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 48659CB92A25537300F19B79 /* FirebaseAuth */; };
+		48659CBC2A255E6500F19B79 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48659CBB2A255E6500F19B79 /* Login.swift */; };
+		48F46FD22A259EB300CF3BC0 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F46FD12A259EB200CF3BC0 /* AuthenticationViewModel.swift */; };
+		48F46FD42A25A50D00CF3BC0 /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F46FD32A25A50D00CF3BC0 /* Signup.swift */; };
+		48F46FD62A26447900CF3BC0 /* AuthenticatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F46FD52A26447900CF3BC0 /* AuthenticatedView.swift */; };
+		48F46FD82A26449700CF3BC0 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F46FD72A26449700CF3BC0 /* AuthenticationView.swift */; };
+		48F46FDA2A2645BB00CF3BC0 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F46FD92A2645BB00CF3BC0 /* UserProfileView.swift */; };
 		48F5F9F92A1FF4CC008DC78D /* SpeechImprovement_ML 10.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 48F5F9F82A1FF4CC008DC78D /* SpeechImprovement_ML 10.mlmodel */; };
 		48F833902A034D3800307186 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F8338F2A034D3700307186 /* CircleImage.swift */; };
 		48FE7FF02A1E65860041EA3D /* SoundModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FE7FEF2A1E65860041EA3D /* SoundModel.swift */; };
 		48FE7FF82A1E67820041EA3D /* toneModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 48FE7FF62A1E67420041EA3D /* toneModel.mlmodel */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		4838DCF62A0318FA0045380C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4838DCDD2A0318F70045380C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4838DCE42A0318F70045380C;
-			remoteInfo = SpeechImprovement;
-		};
-		4838DD002A0318FA0045380C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4838DCDD2A0318F70045380C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4838DCE42A0318F70045380C;
-			remoteInfo = SpeechImprovement;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4809E1DE2A0831CB003F954C /* RecordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordScreen.swift; sourceTree = "<group>"; };
@@ -60,13 +49,19 @@
 		4838DCE52A0318F70045380C /* SpeechImprovement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeechImprovement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4838DCE82A0318F70045380C /* SpeechImprovementApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechImprovementApp.swift; sourceTree = "<group>"; };
 		4838DCEC2A0318FA0045380C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4838DCF52A0318FA0045380C /* SpeechImprovementTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeechImprovementTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4838DCF92A0318FA0045380C /* SpeechImprovementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechImprovementTests.swift; sourceTree = "<group>"; };
-		4838DCFF2A0318FA0045380C /* SpeechImprovementUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeechImprovementUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4838DD032A0318FA0045380C /* SpeechImprovementUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechImprovementUITests.swift; sourceTree = "<group>"; };
 		4838DD052A0318FA0045380C /* SpeechImprovementUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechImprovementUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4838DD4A2A0327BB0045380C /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		48659CB42A2526F000F19B79 /* Color+Codable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Codable.swift"; sourceTree = "<group>"; };
+		48659CB62A25508A00F19B79 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		48659CBB2A255E6500F19B79 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		48E6946A2A12B50000150E3C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48F46FD12A259EB200CF3BC0 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		48F46FD32A25A50D00CF3BC0 /* Signup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
+		48F46FD52A26447900CF3BC0 /* AuthenticatedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedView.swift; sourceTree = "<group>"; };
+		48F46FD72A26449700CF3BC0 /* AuthenticationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		48F46FD92A2645BB00CF3BC0 /* UserProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		48F5F9F82A1FF4CC008DC78D /* SpeechImprovement_ML 10.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "SpeechImprovement_ML 10.mlmodel"; sourceTree = "<group>"; };
 		48F8338F2A034D3700307186 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		48FE7FEF2A1E65860041EA3D /* SoundModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundModel.swift; sourceTree = "<group>"; };
@@ -78,20 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4838DCF22A0318FA0045380C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4838DCFC2A0318FA0045380C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				48659CBA2A25537300F19B79 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,8 +94,6 @@
 			isa = PBXGroup;
 			children = (
 				4838DCE52A0318F70045380C /* SpeechImprovement.app */,
-				4838DCF52A0318FA0045380C /* SpeechImprovementTests.xctest */,
-				4838DCFF2A0318FA0045380C /* SpeechImprovementUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,10 +111,13 @@
 				482A77762A0BFBBB00E3DF89 /* IntermediateScreen.swift */,
 				482A77772A0BFBBB00E3DF89 /* ScoreData.swift */,
 				482A77722A0BFBBB00E3DF89 /* ScoreModels.swift */,
+				48659CB42A2526F000F19B79 /* Color+Codable.swift */,
 				48FE7FEF2A1E65860041EA3D /* SoundModel.swift */,
 				482A77732A0BFBBB00E3DF89 /* ScoreScreen.swift */,
-				4838DCEC2A0318FA0045380C /* Assets.xcassets */,
 				48F8338F2A034D3700307186 /* CircleImage.swift */,
+				48F46FDB2A264C6800CF3BC0 /* Authentication */,
+				4838DCEC2A0318FA0045380C /* Assets.xcassets */,
+				48659CB62A25508A00F19B79 /* GoogleService-Info.plist */,
 			);
 			path = SpeechImprovement;
 			sourceTree = "<group>";
@@ -154,6 +137,19 @@
 				4838DD052A0318FA0045380C /* SpeechImprovementUITestsLaunchTests.swift */,
 			);
 			path = SpeechImprovementUITests;
+			sourceTree = "<group>";
+		};
+		48F46FDB2A264C6800CF3BC0 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				48659CBB2A255E6500F19B79 /* Login.swift */,
+				48F46FD32A25A50D00CF3BC0 /* Signup.swift */,
+				48F46FD52A26447900CF3BC0 /* AuthenticatedView.swift */,
+				48F46FD72A26449700CF3BC0 /* AuthenticationView.swift */,
+				48F46FD92A2645BB00CF3BC0 /* UserProfileView.swift */,
+				48F46FD12A259EB200CF3BC0 /* AuthenticationViewModel.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 		48FE7FF72A1E67740041EA3D /* Models */ = {
@@ -184,45 +180,12 @@
 			dependencies = (
 			);
 			name = SpeechImprovement;
+			packageProductDependencies = (
+				48659CB92A25537300F19B79 /* FirebaseAuth */,
+			);
 			productName = SpeechImprovement;
 			productReference = 4838DCE52A0318F70045380C /* SpeechImprovement.app */;
 			productType = "com.apple.product-type.application";
-		};
-		4838DCF42A0318FA0045380C /* SpeechImprovementTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4838DD0C2A0318FA0045380C /* Build configuration list for PBXNativeTarget "SpeechImprovementTests" */;
-			buildPhases = (
-				4838DCF12A0318FA0045380C /* Sources */,
-				4838DCF22A0318FA0045380C /* Frameworks */,
-				4838DCF32A0318FA0045380C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4838DCF72A0318FA0045380C /* PBXTargetDependency */,
-			);
-			name = SpeechImprovementTests;
-			productName = SpeechImprovementTests;
-			productReference = 4838DCF52A0318FA0045380C /* SpeechImprovementTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		4838DCFE2A0318FA0045380C /* SpeechImprovementUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4838DD0F2A0318FA0045380C /* Build configuration list for PBXNativeTarget "SpeechImprovementUITests" */;
-			buildPhases = (
-				4838DCFB2A0318FA0045380C /* Sources */,
-				4838DCFC2A0318FA0045380C /* Frameworks */,
-				4838DCFD2A0318FA0045380C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4838DD012A0318FA0045380C /* PBXTargetDependency */,
-			);
-			name = SpeechImprovementUITests;
-			productName = SpeechImprovementUITests;
-			productReference = 4838DCFF2A0318FA0045380C /* SpeechImprovementUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -237,14 +200,6 @@
 					4838DCE42A0318F70045380C = {
 						CreatedOnToolsVersion = 14.3;
 					};
-					4838DCF42A0318FA0045380C = {
-						CreatedOnToolsVersion = 14.3;
-						TestTargetID = 4838DCE42A0318F70045380C;
-					};
-					4838DCFE2A0318FA0045380C = {
-						CreatedOnToolsVersion = 14.3;
-						TestTargetID = 4838DCE42A0318F70045380C;
-					};
 				};
 			};
 			buildConfigurationList = 4838DCE02A0318F70045380C /* Build configuration list for PBXProject "SpeechImprovement" */;
@@ -256,13 +211,14 @@
 				Base,
 			);
 			mainGroup = 4838DCDC2A0318F70045380C;
+			packageReferences = (
+				48659CB82A25537300F19B79 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 4838DCE62A0318F70045380C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				4838DCE42A0318F70045380C /* SpeechImprovement */,
-				4838DCF42A0318FA0045380C /* SpeechImprovementTests */,
-				4838DCFE2A0318FA0045380C /* SpeechImprovementUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -273,20 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4838DCED2A0318FA0045380C /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4838DCF32A0318FA0045380C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4838DCFD2A0318FA0045380C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				48659CB72A25508A00F19B79 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,55 +241,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				48FE7FF82A1E67820041EA3D /* toneModel.mlmodel in Sources */,
+				48F46FD42A25A50D00CF3BC0 /* Signup.swift in Sources */,
+				48659CBC2A255E6500F19B79 /* Login.swift in Sources */,
+				48F46FD22A259EB300CF3BC0 /* AuthenticationViewModel.swift in Sources */,
 				48FE7FF02A1E65860041EA3D /* SoundModel.swift in Sources */,
 				482A77792A0BFBBB00E3DF89 /* ScoreModels.swift in Sources */,
 				482A777D2A0BFBBB00E3DF89 /* IntermediateScreen.swift in Sources */,
 				4809E1DF2A0831CB003F954C /* RecordScreen.swift in Sources */,
 				482A777C2A0BFBBB00E3DF89 /* ArchivedRunRow.swift in Sources */,
 				4838DCE92A0318F70045380C /* SpeechImprovementApp.swift in Sources */,
+				48F46FD62A26447900CF3BC0 /* AuthenticatedView.swift in Sources */,
 				482A777A2A0BFBBB00E3DF89 /* ScoreScreen.swift in Sources */,
 				480C726B2A1E739E008057A2 /* SpeechImprovement_ML 12.mlmodel in Sources */,
 				480C726F2A1E751B008057A2 /* SpeechImprovement_ML 14.mlmodel in Sources */,
+				48F46FDA2A2645BB00CF3BC0 /* UserProfileView.swift in Sources */,
 				480C726D2A1E748C008057A2 /* SpeechImprovement_ML 13.mlmodel in Sources */,
 				482A777F2A0BFBBB00E3DF89 /* ArchivesScreen.swift in Sources */,
 				48F833902A034D3800307186 /* CircleImage.swift in Sources */,
 				482A777E2A0BFBBB00E3DF89 /* ScoreData.swift in Sources */,
+				48F46FD82A26449700CF3BC0 /* AuthenticationView.swift in Sources */,
 				48F5F9F92A1FF4CC008DC78D /* SpeechImprovement_ML 10.mlmodel in Sources */,
+				48659CB52A2526F000F19B79 /* Color+Codable.swift in Sources */,
 				4838DD4B2A0327BB0045380C /* HomeScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4838DCF12A0318FA0045380C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4838DCFA2A0318FA0045380C /* SpeechImprovementTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4838DCFB2A0318FA0045380C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4838DD042A0318FA0045380C /* SpeechImprovementUITests.swift in Sources */,
-				4838DD062A0318FA0045380C /* SpeechImprovementUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		4838DCF72A0318FA0045380C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4838DCE42A0318F70045380C /* SpeechImprovement */;
-			targetProxy = 4838DCF62A0318FA0045380C /* PBXContainerItemProxy */;
-		};
-		4838DD012A0318FA0045380C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4838DCE42A0318F70045380C /* SpeechImprovement */;
-			targetProxy = 4838DD002A0318FA0045380C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4838DD072A0318FA0045380C /* Debug */ = {
@@ -480,6 +400,8 @@
 				INFOPLIST_KEY_CFBundleExecutable = SpeechImprovement;
 				INFOPLIST_KEY_CFBundleName = SpeechImprovement;
 				INFOPLIST_KEY_CFBundleVersion = 1;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This application would like access to the microphone to detect and display sounds occurring in the environment.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app uses speech recognition to convert recorded audio into text.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -490,7 +412,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = test.SpeechImprovement;
+				PRODUCT_BUNDLE_IDENTIFIER = speechImprovementApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -513,6 +435,8 @@
 				INFOPLIST_KEY_CFBundleExecutable = SpeechImprovement;
 				INFOPLIST_KEY_CFBundleName = SpeechImprovement;
 				INFOPLIST_KEY_CFBundleVersion = 1;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This application would like access to the microphone to detect and display sounds occurring in the environment.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app uses speech recognition to convert recorded audio into text.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -523,87 +447,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = test.SpeechImprovement;
+				PRODUCT_BUNDLE_IDENTIFIER = speechImprovementApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		4838DD0D2A0318FA0045380C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 425XHL28D4;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = test.SpeechImprovementTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeechImprovement.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SpeechImprovement";
-			};
-			name = Debug;
-		};
-		4838DD0E2A0318FA0045380C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 425XHL28D4;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = test.SpeechImprovementTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeechImprovement.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SpeechImprovement";
-			};
-			name = Release;
-		};
-		4838DD102A0318FA0045380C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 425XHL28D4;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = test.SpeechImprovementUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SpeechImprovement;
-			};
-			name = Debug;
-		};
-		4838DD112A0318FA0045380C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 425XHL28D4;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = test.SpeechImprovementUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SpeechImprovement;
 			};
 			name = Release;
 		};
@@ -628,25 +476,26 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4838DD0C2A0318FA0045380C /* Build configuration list for PBXNativeTarget "SpeechImprovementTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4838DD0D2A0318FA0045380C /* Debug */,
-				4838DD0E2A0318FA0045380C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4838DD0F2A0318FA0045380C /* Build configuration list for PBXNativeTarget "SpeechImprovementUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4838DD102A0318FA0045380C /* Debug */,
-				4838DD112A0318FA0045380C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		48659CB82A25537300F19B79 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		48659CB92A25537300F19B79 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48659CB82A25537300F19B79 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4838DCDD2A0318F70045380C /* Project object */;
 }

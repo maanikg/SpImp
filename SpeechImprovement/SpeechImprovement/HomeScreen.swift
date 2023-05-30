@@ -15,8 +15,6 @@ let title = Text("Speech Improvement")
     .fontWeight(.semibold)
     .foregroundColor(Color.black)
 struct HomeScreen: View {
-    @State private var signIn = false
-    @State private var register = false
     var body: some View {
         NavigationStack(){
             
@@ -34,12 +32,26 @@ struct HomeScreen: View {
                         Divider()
                             .background(Color.black)
                         VStack(alignment:.center){
-                            SignInButton(SignInWithAppleButton.Style.black)
-                            //Navigation Link needed
-//                            NavigationView{
+//                            SignInButton(SignInWithAppleButton.Style.black)
+                            
+                            HStack {
+                                NavigationLink(destination: SignUp().navigationBarBackButtonHidden(true)){
+                                    Image(systemName: "person.fill")
+                                    Text("Sign Up")
+                                        .bold()
+                                }.buttonStyle(.borderedProminent)
+                                    .foregroundColor(Color.white)
+                                NavigationLink(destination: Login().navigationBarBackButtonHidden(true)){
+                                    Image(systemName: "lock.fill")
+                                    Text("Log In")
+                                        .bold()
+                                }.buttonStyle(.borderedProminent)
+                                    .foregroundColor(Color.white)
+                            }
                                 NavigationLink(destination: IntermediateScreen().navigationBarBackButtonHidden(true)){
                                     Text("Bypass to Intermediate Screen")
                                 }
+//                                .background(Color.red)
                                 .buttonStyle(.bordered)
                                 .foregroundColor(Color.black)
                                 
@@ -90,21 +102,21 @@ struct HomeScreen: View {
         }
     }
     
-    func SignInButton(_ type: SignInWithAppleButton.Style) -> some View{
-        return SignInWithAppleButton(.signIn) { request in
-            request.requestedScopes = [.fullName, .email]
-        } onCompletion: { result in
-            switch result {
-            case .success(let authResults):
-                print("Authorisation successful \(authResults)")
-            case .failure(let error):
-                print("Authorisation failed: \(error.localizedDescription)")
-            }
-        }
-        //NEED TO CHANGE THIS MANUAL SETTING
-        .frame(width: 200, height: 50, alignment: .center)
-        .signInWithAppleButtonStyle(type)
-    }
+//    func SignInButton(_ type: SignInWithAppleButton.Style) -> some View{
+//        return SignInWithAppleButton(.signIn) { request in
+//            request.requestedScopes = [.fullName, .email]
+//        } onCompletion: { result in
+//            switch result {
+//            case .success(let authResults):
+//                print("Authorisation successful \(authResults)")
+//            case .failure(let error):
+//                print("Authorisation failed: \(error.localizedDescription)")
+//            }
+//        }
+//        //NEED TO CHANGE THIS MANUAL SETTING
+//        .frame(width: 200, height: 50, alignment: .center)
+//        .signInWithAppleButtonStyle(type)
+//    }
     
     
     struct ContentView_Previews: PreviewProvider {

@@ -16,8 +16,11 @@ extension TimeInterval{
     var minutes: Int{return (Int(self.rounded())-hours*3600)/60}
     var seconds: Int{return Int(self.rounded())%60}
 }
+
+
+
 //TODO: STRUCT OR CLASS?
-class Score : Identifiable{
+class Score : Identifiable, Codable{
 //    var run:Int = 1
     var date: Date //date, time of recording
     var scoreVal: Double = 0
@@ -34,7 +37,7 @@ class Score : Identifiable{
 //    var url : URL?
     var duration: TimeInterval = TimeInterval()
 //    var scoreColor: Color = Color(red:1.0-Double(scoreVal), green: scoreVal, blue:0.0)
-    @State var scoreColor:Color = Color.black
+    var scoreColor:Color = Color.black
     var id: Int = 0
 //    var soundModelResults:[ResultsObserver]
     var resultsObserver:ResultsObserver
@@ -42,6 +45,13 @@ class Score : Identifiable{
 //    try audioFileANalyzer.add(classifySoundRequest, withObserver: resultsObserver)
 //    audioFileAnalyzer.analyze()
     
+//extension to make Color type codable
+   enum CodingKeys: String, CodingKey {
+        case date, scoreVal, badFeatures, goodFeatures, tips, storedFilename, scoreName, fullPath, toneDict, toneScore, path, moreInfo, duration, scoreColor, id, resultsObserver
+    }
+    
+
+
     init(date: Date = Date.now, scoreVal: Double = 50, badFeatures: [String] = [], goodFeatures: [String] = [], tips:[String] = [], fullPath:String = "", storedFilename: String = "temp", duration: TimeInterval = TimeInterval(0), scoreColor: Color = .black) {
         self.id = run
         self.date = date

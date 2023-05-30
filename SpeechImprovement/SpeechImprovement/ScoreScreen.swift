@@ -116,13 +116,13 @@ struct FinalScore: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight:.infinity)
                 HStack{
-                    NavigationLink(destination: HomeScreen().navigationBarBackButtonHidden(true)) {
-                        Image(systemName: "chevron.backward")
-                        Text("Home Page")
-                    }
-                    .tint(Color.black.opacity(0.25))
-                    .buttonStyle(.borderedProminent)
-                    .padding()
+//                    NavigationLink(destination: HomeScreen().navigationBarBackButtonHidden(true)) {
+//                        Image(systemName: "chevron.backward")
+//                        Text("Home Page")
+//                    }
+//                    .tint(Color.black.opacity(0.25))
+//                    .buttonStyle(.borderedProminent)
+//                    .padding()
                     
                     NavigationLink(destination: ArchivesScreen().navigationBarBackButtonHidden(true)) {
                         Image(systemName: "list.bullet")

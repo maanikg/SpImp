@@ -32,7 +32,7 @@ let toneOrderReverse: [Int:String] = [5: "Perfect", 4: "Slightly Monotone", 3: "
 
 //TODO: COMMENTED OUT PRINTING FOR CLARITY
 /// An observer that receives results from a classify sound request.
-class ResultsObserver: NSObject, SNResultsObserving {
+class ResultsObserver: NSObject, SNResultsObserving, Codable {
     var resultDict: [String:[String:Double]] = [:]
     var totalTime:Double = 0
     var totalAnalysisTime:Double = 0

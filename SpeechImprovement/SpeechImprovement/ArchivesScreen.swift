@@ -15,14 +15,14 @@ struct ArchivesScreen: View {
         NavigationStack(){
             VStack{
                 HStack{
-                    NavigationLink(destination: HomeScreen().navigationBarBackButtonHidden(true)) {
-                        Image(systemName: "house")
-                        Text("Home Page")
-                    }
-                    .tint(Color.black.opacity(0.25))
-                    .buttonStyle(.borderedProminent)
+//                    NavigationLink(destination: HomeScreen().navigationBarBackButtonHidden(true)) {
+//                        Image(systemName: "house")
+//                        Text("Home Page")
+//                    }
+//                    .tint(Color.black.opacity(0.25))
+//                    .buttonStyle(.borderedProminent)
                     
-                    NavigationLink(destination: Record().navigationBarBackButtonHidden(true)) {
+                    NavigationLink(destination: RecordScreen().navigationBarBackButtonHidden(true)) {
                         Image(systemName: "mic.fill")
                         Text("Record")
                     }

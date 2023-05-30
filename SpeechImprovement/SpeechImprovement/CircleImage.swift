@@ -13,9 +13,9 @@ struct CircleImage: View {
         Image("waveform")
             .clipShape(Circle())
             .overlay{
-                Circle().stroke(.black, lineWidth: 5)
+                Circle().stroke(.white, lineWidth: 5)
             }
-            .shadow(radius: 20)
+//            .shadow(radius: 20)
     }
 }
 
