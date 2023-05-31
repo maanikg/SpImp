@@ -1,0 +1,13 @@
+{
+  "MLModelVersionStringKey" : "--",
+  "MLModelDescriptionKey" : "--",
+  "MLModelCreatorDefinedKey" : {
+    "com.apple.createml.app.tag" : "99.4",
+    "com.apple.createml.version" : "13.2.1",
+    "com.apple.coreml.model.preview.type" : "soundClassifier",
+    "com.apple.createml.app.version" : "4.0",
+    "sampleRate" : "16000"
+  },
+  "MLModelAuthorKey" : "Maanik Gogna",
+  "MLModelLicenseKey" : "--"
+}
