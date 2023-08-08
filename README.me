@@ -1,4 +1,0 @@
-Start File
-Testing 1 2 3
-
-Testing this clone
