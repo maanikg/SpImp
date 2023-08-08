@@ -1,7 +1,5 @@
 # 🗣️ helloMilo
 
-<>
-
 About the project:
 - The app allows users to record their speech and will compute a score for the speech and provide feedback based on various metrics such as volume, speed, tone, and clarity
 - By using machine learning models of different speech categories, the app is able to classify the quality of speech in real-time
