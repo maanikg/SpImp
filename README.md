@@ -3,15 +3,13 @@
 <>
 
 About the project:
-- The program is a fully functional full stack web app that allows users to log in or create a profile, and find other students for roommates
-- The app includes a chat functionality which creates a chat room between two people who have matched each other that allows users to communicate in realtime
-- Users are automatically recommended by an AI model based on users' preferences (ex. program of study, sleep schedule, etc.)
+- The app allows users to record their speech and will compute a score for the speech and provide feedback based on various metrics such as volume, speed, tone, and clarity
+- By using machine learning models of different speech categories, the app is able to classify the quality of speech in real-time
 
 The process:
-- Created the application frontend with `React.js`
-- Set up up a database using `MonogoDB` to act as our backend to the project and to store our users profiles, data, and messages
-- Implemented the AI model to curate roomate recommendations via a `Python` backend using the `pandas` library (reading through the database and computing a compatibility score between 2 people)
-- Integrated the database, backend, and frontend together using the `Flask` and `PyMongo` libraries
+- Developed the app frontend with `SwiftUI`
+- Created machine learning models via `CreateML` (`CoreML`) with over 90% validation accuracy for various speech metrics
+- Set up the backend to manage authentication and save user info with `Firebase`
 
 ---
 
