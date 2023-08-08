@@ -1,5 +1,5 @@
 # 🗣️ helloMilo
-![IMG_7338](https://github.com/maanikg/helloMilo/assets/98338848/c4c20c69-4611-44a2-b639-9335570fd442)
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/98338848/259256046-46608b65-9327-4f4c-a57f-2dd2a13b49e5.PNG" width=50% height=50% >
 
 About the project:
 - The app allows users to record their speech and will compute a score for the speech and provide feedback based on various metrics such as volume, speed, tone, and clarity
