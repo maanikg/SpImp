@@ -1,0 +1,24 @@
+{
+    "fileFormatVersion": "1.0.0",
+    "itemInfoEntries": {
+        "043B1B9A-DAE1-40F2-BE62-7FC363FDDD4F": {
+            "author": "com.apple.CoreML",
+            "description": "CoreML Model Specification",
+            "name": "SpeechImprovement_ML 13.mlmodel",
+            "path": "com.apple.CoreML/SpeechImprovement_ML 13.mlmodel"
+        },
+        "4D20D565-A220-4C1D-9B7D-CF65FA9D7FAD": {
+            "author": "com.apple.CoreML",
+            "description": "External FeatureDescription Overlay",
+            "name": "FeatureDescriptions.json",
+            "path": "com.apple.CoreML/FeatureDescriptions.json"
+        },
+        "5974DAD9-238D-4799-83BC-3C3F2EEDFF1F": {
+            "author": "com.apple.CoreML",
+            "description": "External Metadata Overlay",
+            "name": "Metadata.json",
+            "path": "com.apple.CoreML/Metadata.json"
+        }
+    },
+    "rootModelIdentifier": "043B1B9A-DAE1-40F2-BE62-7FC363FDDD4F"
+}
